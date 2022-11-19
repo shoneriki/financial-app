@@ -18,8 +18,18 @@ const ExchangeRate = ({
         <div className="exchange-amount-div">
           <h3>Exchange Rate: {roundedExchange}</h3>
           <p>
-            {Currencies[primaryCurrency].sign} {roundedAmount}
-            = {roundedResult} {secondaryCurrency}
+            {Currencies.map((currency) => {
+              if(currency.value === primaryCurrency) {
+                return currency.sign
+              }
+            })}{roundedAmount}
+            = {
+              Currencies.map((currency) => {
+                if(currency.value === secondaryCurrency) {
+                  return currency.sign
+                }
+              })
+            }{roundedResult}
           </p>
         </div>
       ) : null}

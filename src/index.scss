@@ -58,6 +58,7 @@ code {
     border: none;
     border-radius: 4px;
     margin:8px 0;
+    display:none;
   }
 }
 
@@ -143,8 +144,41 @@ code {
     margin: 0 16px;
   }
 
+  .btn-wrap {
+    display: flex;
+    width: 100%;
+
+    button {
+      width: 100%;
+      background-color: #bada55;
+      border: none;
+      border-radius: 4px;
+      margin: 8px 0;
+      display: block;
+    }
+  }
+
   .currency-converter {
     border-radius: 16px 16px 0 0;
+
+    .column-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input{
+      text-align:center;
+      width: 90%;
+    }
   }
 
   .exchange-rate {

@@ -3,41 +3,44 @@ import axios from "axios";
 
 import ExchangeRate from "./ExchangeRate";
 
-export const Currencies = {
-  USD: { value: "USD", name: "US Dollars", sign: "$", digital: false },
-  CAD: { value: "CAD", name: "Canadian Dollars", sign: "$", digital: false },
-  AUD: { value: "AUD", name: "Australian Dollars", sign: "$", digital: false },
-  EUR: { value: "EUR", name: "Euro", sign: "€", digital: false },
-  JPY: { value: "JPY", name: "Japanese Yen", sign: "¥", digital: false },
-  GBP: { value: "GBP", name: "British Pound", sign: "£", digital: false },
-  ADA: { value: "ADA", name: "Cardano", sign: "₳", digital: true },
-  BNB: { value: "BNB", name: "BNB", sign: "BNB", digital: true },
-  BTC: { value: "BTC", name: "Bitcoin", sign: "₿", digital: true },
-  DOGE: { value: "DOGE", name: "Dogecoin", sign: "Ð", digital: true },
-  ETH: { value: "ETH", name: "Ethereum", sign: "Ξ", digital: true },
-  XRP: { value: "XRP", name: "XRP", sign: "x", digital: true },
-  USDT: { value: "USDT", name: "Tether", sign: "₮", digital: true },
-};
+// export const Currencies = {
+//   USD: { value: "USD", name: "US Dollars", sign: "$", digital: false },
+//   CAD: { value: "CAD", name: "Canadian Dollars", sign: "$", digital: false },
+//   AUD: { value: "AUD", name: "Australian Dollars", sign: "$", digital: false },
+//   EUR: { value: "EUR", name: "Euro", sign: "€", digital: false },
+//   JPY: { value: "JPY", name: "Japanese Yen", sign: "¥", digital: false },
+//   GBP: { value: "GBP", name: "British Pound", sign: "£", digital: false },
+//   ADA: { value: "ADA", name: "Cardano", sign: "₳", digital: true },
+//   BNB: { value: "BNB", name: "BNB", sign: "BNB", digital: true },
+//   BTC: { value: "BTC", name: "Bitcoin", sign: "₿", digital: true },
+//   DOGE: { value: "DOGE", name: "Dogecoin", sign: "Ð", digital: true },
+//   ETH: { value: "ETH", name: "Ethereum", sign: "Ξ", digital: true },
+//   XRP: { value: "XRP", name: "XRP", sign: "x", digital: true },
+//   USDT: { value: "USDT", name: "Tether", sign: "₮", digital: true },
+// };
 
-const physicalCurrencies = Object.keys(Currencies).filter(currency=> Currencies[currency].digital)
+// const physicalCurrencies = Object.keys(Currencies).filter(currency=> Currencies[currency].digital)
+
+export const Currencies = [
+  { value: "USD", name: "US Dollars", sign: "$", digital: false },
+  { value: "CAD", name: "Canadian Dollars", sign: "$", digital: false },
+  { value: "AUD", name: "Australian Dollars", sign: "$", digital: false },
+  { value: "EUR", name: "Euro", sign: "€", digital: false },
+  { value: "JPY", name: "Japanese Yen", sign: "¥", digital: false },
+  { value: "GBP", name: "British Pound", sign: "£", digital: false },
+  { value: "ADA", name: "Cardano", sign: "₳", digital: true },
+  { value: "BNB", name: "BNB", sign: "BNB", digital: true },
+  { value: "BTC", name: "Bitcoin", sign: "₿", digital: true },
+  { value: "DOGE", name: "Dogecoin", sign: "Ð", digital: true },
+  { value: "ETH", name: "Ethereum", sign: "Ξ", digital: true },
+  { value: "XRP", name: "XRP", sign: "x", digital: true },
+  { value: "USDT", name: "Tether", sign: "₮", digital: true },
+];
+
+const digitalCurrencies = Currencies.filter((currency) => currency.digital);
+const physicalCurrencies = Currencies.filter((currency) => !currency.digital);
+
 const CurrencyConverter = () => {
-  // const currencies = [
-  //   "USD",
-  //   "CAD",
-  //   "AUD",
-  //   "JPY",
-  //   "EUR",
-  //   "GBP",
-  //   "BTC",
-  //   "ETH",
-  //   "XRP",
-  //   "LTC",
-  //   "ADA",
-  //   "USDT",
-  //   "BNB"
-  // ];
-  const currencies2 = ["USD", "CAD", "AUD", "EUR", "JPY", "GBP"];
-
 
   // change names later?
   const [primaryCurrency, setPrimaryCurrency] = useState("USD");
@@ -76,6 +79,8 @@ const CurrencyConverter = () => {
           );
           // console.log("exchangeRate:", exchangeRate);
           // console.log("setResult", result);
+          console.log("primary currency", primaryCurrency)
+          console.log("second currency", secondaryCurrency)
         }
       })
       .catch((error) => {
@@ -116,10 +121,9 @@ const CurrencyConverter = () => {
                   <option key={index}>{currency}</option>
                 ))} */}
                 {
-                  Object.keys(Currencies).map((currency, index) => (
-                    <option key={index}>{currency}</option>
-                  )
-                  )
+                  Currencies.map((currency,index) => (
+                    <option key={index}>{currency.value}</option>
+                  ))
                 }
               </select>
             </div>
@@ -131,12 +135,14 @@ const CurrencyConverter = () => {
                 className="currency-options"
                 onChange={(e) => setSecondaryCurrency(e.target.value)}
               >
-                {currencies2.map((currency, index) => (
+                {/* {currencies2.map((currency, index) => (
                   <option key={index}>{currency}</option>
-                ))}
-                {/* {
-
-                } */}
+                ))} */}
+                {
+                  physicalCurrencies.map((currency, index) => (
+                    <option key={index}>{currency.value}</option>
+                  ))
+                }
               </select>
             </div>
           </div>
