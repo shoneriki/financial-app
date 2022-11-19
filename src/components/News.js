@@ -5,22 +5,21 @@ const News = () => {
   const [articles, setArticles] = useState(null);
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "http://localhost:8000/news",
-    };
+    // const options = {
+    //   method: "GET",
+    //   url: "http://localhost:8000/news",
+    // };
 
-    axios
-      .request(options)
-      .then((response) => {
-        console.log("news api went into the .then");
-        // console.log(response.data);
-        // setArticles(response.data);
-      })
-      .catch((error) => {
-        console.log("the news feed error");
-        console.error(error);
-      });
+    // axios
+    //   .request(options)
+    //   .then((response) => {
+    //     // console.log(response.data);
+    //     setArticles(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log("the news feed error");
+    //     console.error(error);
+    //   });
   }, []);
 
   const firstFiveArticles = articles?.slice(0, 5);

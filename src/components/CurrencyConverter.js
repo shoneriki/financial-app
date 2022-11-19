@@ -3,146 +3,156 @@ import axios from "axios";
 
 import ExchangeRate from "./ExchangeRate";
 
+export const Currencies = {
+  USD: { value: "USD", name: "US Dollars", sign: "$", digital: false },
+  CAD: { value: "CAD", name: "Canadian Dollars", sign: "$", digital: false },
+  AUD: { value: "AUD", name: "Australian Dollars", sign: "$", digital: false },
+  EUR: { value: "EUR", name: "Euro", sign: "€", digital: false },
+  JPY: { value: "JPY", name: "Japanese Yen", sign: "¥", digital: false },
+  GBP: { value: "GBP", name: "British Pound", sign: "£", digital: false },
+  ADA: { value: "ADA", name: "Cardano", sign: "₳", digital: true },
+  BNB: { value: "BNB", name: "BNB", sign: "BNB", digital: true },
+  BTC: { value: "BTC", name: "Bitcoin", sign: "₿", digital: true },
+  DOGE: { value: "DOGE", name: "Dogecoin", sign: "Ð", digital: true },
+  ETH: { value: "ETH", name: "Ethereum", sign: "Ξ", digital: true },
+  XRP: { value: "XRP", name: "XRP", sign: "x", digital: true },
+  USDT: { value: "USDT", name: "Tether", sign: "₮", digital: true },
+};
+
+const physicalCurrencies = Object.keys(Currencies).filter(currency=> Currencies[currency].digital)
 const CurrencyConverter = () => {
-  const currencies = ["USD", "JPY","EUR", "BTC", "KWR", "ETH","XRP", "LTC", "ADA"];
+  // const currencies = [
+  //   "USD",
+  //   "CAD",
+  //   "AUD",
+  //   "JPY",
+  //   "EUR",
+  //   "GBP",
+  //   "BTC",
+  //   "ETH",
+  //   "XRP",
+  //   "LTC",
+  //   "ADA",
+  //   "USDT",
+  //   "BNB"
+  // ];
+  const currencies2 = ["USD", "CAD", "AUD", "EUR", "JPY", "GBP"];
+
 
   // change names later?
-  const [primaryCurrency, setPrimaryCurrency] = useState(currencies[0]);
-  const [secondaryCurrency, setSecondaryCurrency] = useState(currencies[1]);
+  const [primaryCurrency, setPrimaryCurrency] = useState("USD");
+  const [secondaryCurrency, setSecondaryCurrency] = useState("JPY");
 
   const [amount, setAmount] = useState(1);
   const [exchangeRate, setExchangeRate] = useState(0);
   const [result, setResult] = useState(0);
 
   const convert = () => {
-    // const options = {
-    //   method: "GET",
-    //   url: "http://localhost:8000/convert",
-    //   params: {
-    //     from_currency: primaryCurrency,
-    //     function: "CURRENCY_EXCHANGE_RATE",
-    //     to_currency: secondaryCurrency,
-    //   },
-    // };
-
-    // axios
-    //   .request(options)
-    //   .then((response) => {
-    //     console.log("response:", response);
-    //     console.log(response.data);
-    //     console.log("what exchange rate should be: ", response.data);
-    //     if (
-    //       response.data[["Realtime Currency Exchange Rate"]] &&
-    //       response.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
-    //     )
-    //     {
-    //       setExchangeRate(
-    //         response.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
-    //       );
-    //       setResult(
-    //         response.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"] *
-    //           amount
-    //       );
-    //       console.log("exchangeRate:", exchangeRate);
-    //       console.log("setResult", result);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log("currency error from the frontend");
-    //     console.error(error);
-    //   });
-
     const options = {
       method: "GET",
-      // url: "https://currency-converter18.p.rapidapi.com/api/v1/convert",
       url: "http://localhost:8000/convert",
-      params: { from: primaryCurrency, to: secondaryCurrency, amount: amount },
+      params: {
+        from_currency: primaryCurrency,
+        function: "CURRENCY_EXCHANGE_RATE",
+        to_currency: secondaryCurrency,
+      },
     };
-
     axios
       .request(options)
-      .then(function (response) {
-        console.log(
-          "inside .then in frontend, response.data:",
-          response.data
-        );
-        console.log("response.data.convertedAmount", response.data.convertedAmount)
-        setResult(
-          response.data.convertedAmount
-        )
+      .then((response) => {
+        console.log("response:", response);
+        console.log(response.data);
+        if (
+          response.data[["Realtime Currency Exchange Rate"]] &&
+          response.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
+        ) {
+          setExchangeRate(
+            response.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
+          );
+          setResult(
+            response.data["Realtime Currency Exchange Rate"][
+              "5. Exchange Rate"
+            ] * amount
+          );
+          // console.log("exchangeRate:", exchangeRate);
+          // console.log("setResult", result);
+        }
       })
-      .catch(function (error) {
-        console.log("inside error in frontend")
+      .catch((error) => {
+        console.log("currency error from the frontend");
         console.error(error);
       });
+  };
 
-
+  const formHandler = (e) => {
+    e.preventDefault();
+    console.log("formHandler entered");
   };
 
   return (
-    <div>
+    <div className="wrapper">
       <div className="currency-converter">
-        <div className="input-container">
-          <h2>Currency Converter</h2>
-          <table>
-            <tbody>
-              <tr>
-                <td>Primary Currency:</td>
-                <td>
-                  <input
-                    type="number"
-                    name="currency-amount-1"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                  />
-                </td>
-                <td>
-                  <select
-                    value={primaryCurrency}
-                    name="currency-option-1"
-                    className="currency-options"
-                    onChange={(e) => setPrimaryCurrency(e.target.value)}
-                  >
-                    {currencies.map((currency, index) => (
-                      <option key={index}>{currency}</option>
-                    ))}
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td>Secondary Currency:</td>
-                <td>
-                  <input
-                    type="number"
-                    name="currency-amount-2"
-                    value={result}
-                    disabled={true}
-                  />
-                </td>
-                <td>
-                  <select
-                    value={secondaryCurrency}
-                    name="currency-option-2"
-                    className="currency-options"
-                    onChange={(e) => setSecondaryCurrency(e.target.value)}
-                  >
-                    {currencies.map((currency, index) => (
-                      <option key={index}>{currency}</option>
-                    ))}
-                  </select>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <button id="convert-btn" onClick={convert}>
-            Convert
-          </button>
-        </div>
+        <h2>Currency Converter</h2>
+        <form onSubmit={formHandler}>
+          <div className="column-wrap">
+            <div className="column first">
+              <p>Amount:</p>
+              <input
+                type="number"
+                name="currency-amount-1"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </div>
+            <div className="column second select-container">
+              <p>From:</p>
+              <select
+                value={primaryCurrency}
+                name="currency-option-1"
+                className="currency-options"
+                onChange={(e) => setPrimaryCurrency(e.target.value)}
+              >
+                {/* {currencies.map((currency, index) => (
+                  <option key={index}>{currency}</option>
+                ))} */}
+                {
+                  Object.keys(Currencies).map((currency, index) => (
+                    <option key={index}>{currency}</option>
+                  )
+                  )
+                }
+              </select>
+            </div>
+            <div className="column third select-container">
+              <p>To:</p>
+              <select
+                value={secondaryCurrency}
+                name="currency-option-2"
+                className="currency-options"
+                onChange={(e) => setSecondaryCurrency(e.target.value)}
+              >
+                {currencies2.map((currency, index) => (
+                  <option key={index}>{currency}</option>
+                ))}
+                {/* {
+
+                } */}
+              </select>
+            </div>
+          </div>
+          <div className="btn-wrap">
+            <button id="convert-btn" type="submit" onClick={convert}>
+              Convert
+            </button>
+          </div>
+        </form>
       </div>
       <ExchangeRate
-        // exchangeRate={exchangeRate}
+        exchangeRate={exchangeRate}
         primaryCurrency={primaryCurrency}
         secondaryCurrency={secondaryCurrency}
+        result={result}
+        amount={amount}
       />
     </div>
   );

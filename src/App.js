@@ -7,7 +7,7 @@ function App() {
       <div className="vertical left">
         <CurrencyConverter />
       </div>
-      <News />
+      {/* <News /> */}
     </div>
   );
 }
