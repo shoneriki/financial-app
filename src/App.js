@@ -21,7 +21,9 @@ function App() {
           <CurrencyConverter loading={loading} setLoading={setLoading} />
         </div>
         {/* <News /> */}
-        <LineChart loading={loading} setLoading={setLoading} />
+        <div className="right">
+          <LineChart loading={loading} setLoading={setLoading} />
+        </div>
       </div>
     </div>
   );

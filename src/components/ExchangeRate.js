@@ -14,7 +14,7 @@ const ExchangeRate = ({
   const roundedAmount = Math.round(amount * 100) / 100;
   return (
     <div className="exchange-rate">
-      {(result !== 0) | null && exchangeRate !== 0 ? (
+    {(result !== 0) | null && exchangeRate !== 0 ? (
         <div className="exchange-amount-div">
           <h3>Exchange Rate: {roundedExchange}</h3>
           <p>

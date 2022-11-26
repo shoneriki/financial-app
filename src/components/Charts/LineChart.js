@@ -87,7 +87,7 @@ const LineChart = ({ loading, setLoading }) => {
   };
 
   return (
-    <div>
+    <div className="lineChart-wrap">
       {/* <form onSubmit={chartDataReq}> */}
       {loading && <Loading />}
       <div className="column-wrap">
@@ -99,9 +99,6 @@ const LineChart = ({ loading, setLoading }) => {
             className="currency-options"
             onChange={(e) => setFirstCurrency(e.target.value)}
           >
-            {/* {currencies.map((currency, index) => (
-                  <option key={index}>{currency}</option>
-                ))} */}
             {Currencies.map((currency, index) => (
               <option key={index}>{currency.value}</option>
             ))}
@@ -115,16 +112,13 @@ const LineChart = ({ loading, setLoading }) => {
             className="currency-options"
             onChange={(e) => setSecondCurrency(e.target.value)}
           >
-            {/* {currencies2.map((currency, index) => (
-                  <option key={index}>{currency}</option>
-                ))} */}
             {physicalCurrencies.map((currency, index) => (
               <option key={index}>{currency.value}</option>
             ))}
           </select>
         </div>
       </div>
-      <button onClick={chartDataReq}>Data</button>
+      <button onClick={chartDataReq}>Weekly Exchange</button>
       <div className="dataColumn wrap">
         {/* <div>
             {dateArray.map((date, index) => (
@@ -134,11 +128,9 @@ const LineChart = ({ loading, setLoading }) => {
             ))}
           </div> */}
         {dataArray.map((weeklyClose, index) => (
-          <div>
             <p key={index}>
               {index + 1}: {weeklyClose},
             </p>
-          </div>
         ))}
       </div>
       {/* </form> */}

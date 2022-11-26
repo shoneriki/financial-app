@@ -186,16 +186,31 @@ code {
     margin: 16px 0 0 0;
   }
 }
-
-.dataColumn.wrap {
+.right {
   display: flex;
-  flex-wrap: wrap;
-  flex: 0 1 calc(20% - 8px);
-  margin: 0;
-  align-items: center;
-  max-height: 50%;
-  max-width: 50%;
 }
+
+.lineChart-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .dataColumn.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 calc(10% - 8px);
+    margin: 0;
+    align-items: center;
+  }
+
+  .column-wrap {
+    display: flex;
+  }
+
+}
+
 
 
 
