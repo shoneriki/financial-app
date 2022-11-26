@@ -97,4 +97,44 @@ app.get("/news", (req, res) => {
   //   });
 });
 
+app.get("/data", async (req, res) => {
+  const firstCurrency = req.query.from_symbol;
+  const secondCurrency = req.query.to_symbol;
+  const options = {
+    method: "GET",
+    url: "https://alpha-vantage.p.rapidapi.com/query",
+    port: 443,
+    params: {
+      function: "FX_WEEKLY",
+      from_symbol: firstCurrency,
+      to_symbol: secondCurrency,
+      datatype: "json",
+    },
+    headers: {
+      "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+      "X-RapidAPI-Host": "alpha-vantage.p.rapidapi.com",
+    },
+  };
+  axios
+    .request(options)
+    .then(function (response) {
+      const responseDataObj = response.data["Time Series FX (Weekly)"]
+
+      let array = [];
+      for (const date in responseDataObj) {
+        if (date.includes("2022")) {
+          let valueObj = responseDataObj[date];
+          array.push(valueObj["4. close"])
+        }
+      }
+      console.log("new array", array)
+      res.json(
+        response.data
+      )
+      })
+    .catch(function (error) {
+      console.error(error);
+    });
+  })
+
 app.listen(8000, () => console.log(`Server is running on port ${PORT}`));

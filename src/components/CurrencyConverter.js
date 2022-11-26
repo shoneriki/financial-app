@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Loading from "./Loading"
 
 import ExchangeRate from "./ExchangeRate";
+
 
 // export const Currencies = {
 //   USD: { value: "USD", name: "US Dollars", sign: "$", digital: false },
@@ -37,8 +39,8 @@ export const Currencies = [
   { value: "USDT", name: "Tether", sign: "₮", digital: true },
 ];
 
-const digitalCurrencies = Currencies.filter((currency) => currency.digital);
-const physicalCurrencies = Currencies.filter((currency) => !currency.digital);
+export const digitalCurrencies = Currencies.filter((currency) => currency.digital);
+export const physicalCurrencies = Currencies.filter((currency) => !currency.digital);
 
 const CurrencyConverter = () => {
 
@@ -49,6 +51,7 @@ const CurrencyConverter = () => {
   const [amount, setAmount] = useState(1);
   const [exchangeRate, setExchangeRate] = useState(0);
   const [result, setResult] = useState(0);
+  const [loading, setLoading] = useState(false)
 
   const convert = () => {
     const options = {
@@ -63,6 +66,7 @@ const CurrencyConverter = () => {
     axios
       .request(options)
       .then((response) => {
+        setLoading(true)
         console.log("response:", response);
         console.log(response.data);
         if (
@@ -79,13 +83,14 @@ const CurrencyConverter = () => {
           );
           // console.log("exchangeRate:", exchangeRate);
           // console.log("setResult", result);
-          console.log("primary currency", primaryCurrency)
-          console.log("second currency", secondaryCurrency)
         }
       })
       .catch((error) => {
         console.log("currency error from the frontend");
         console.error(error);
+      })
+      .finally(() => {
+        setLoading(false)
       });
   };
 
@@ -98,6 +103,7 @@ const CurrencyConverter = () => {
     <div className="wrapper">
       <div className="currency-converter">
         <h2>Currency Converter</h2>
+        <p className="forDesktop"> Please enter an amount and currency and press enter</p>
         <form onSubmit={formHandler}>
           <div className="column-wrap">
             <div className="column first">

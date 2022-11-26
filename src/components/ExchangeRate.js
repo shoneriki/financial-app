@@ -33,9 +33,9 @@ const ExchangeRate = ({
           </p>
         </div>
       ) : null}
-      <p>
+      {/* <p>
         {primaryCurrency} to {secondaryCurrency}
-      </p>
+      </p> */}
     </div>
   );
 };

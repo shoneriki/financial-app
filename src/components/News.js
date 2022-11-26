@@ -20,6 +20,7 @@ const News = () => {
     //     console.log("the news feed error");
     //     console.error(error);
     //   });
+
   }, []);
 
   const firstFiveArticles = articles?.slice(0, 5);
