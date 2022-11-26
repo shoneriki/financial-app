@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,13 +8,17 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import axios from "axios"
-import { Currencies, digitalCurrencies, physicalCurrencies } from "../CurrencyConverter";
-import {ExchangeRate} from "../ExchangeRate"
+} from "chart.js";
+import axios from "axios";
+import {
+  Currencies,
+  digitalCurrencies,
+  physicalCurrencies,
+} from "../CurrencyConverter";
+import { ExchangeRate } from "../ExchangeRate";
+import Loading from "../Loading";
 
-import {Line} from 'react-chartjs-2'
-
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -26,9 +30,12 @@ ChartJS.register(
   Legend
 );
 
-const LineChart = () => {
+const LineChart = ({ loading, setLoading }) => {
   const [firstCurrency, setFirstCurrency] = useState("USD");
-  const [secondCurrency, setSecondCurrency] = useState("JPY")
+  const [secondCurrency, setSecondCurrency] = useState("JPY");
+
+  const [dataArray, setDataArray] = useState([]);
+  const [dateArray, setDateArray] = useState([]);
 
   const getData = async () => {
     const options = {
@@ -48,71 +55,95 @@ const LineChart = () => {
     axios
       .request(options)
       .then((response) => {
-        console.log("response:",response)
+        console.log("response:", response);
         const responseDataObj = response.data["Time Series FX (Weekly)"];
-        console.log("responseDataObj", responseDataObj)
-
-        let array = [];
+        console.log("responseDataObj", responseDataObj);
+        // let dateArray = [];
+        let dataArray = [];
+        let properDataArray = dataArray.reverse();
         for (const date in responseDataObj) {
           if (date.includes("2022")) {
+            // dateArray.push(date)
             let valueObj = responseDataObj[date];
-            array.push(valueObj["4. close"]);
+            dataArray.push(valueObj["4. close"]);
           }
         }
-        console.log("new array", array);
+        console.log("new array or dataArray", dataArray);
+        // setDateArray();
+        setDataArray(properDataArray);
       })
       .catch((error) => {
         console.log("linechart error from the frontend");
         console.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-  }
+  };
   const chartDataReq = (e) => {
-    e.preventDefault()
-    getData()
-  }
-
+    // e.preventDefault()
+    setLoading(true);
+    getData();
+  };
 
   return (
     <div>
-      <form onSubmit={chartDataReq}>
-        <div className="column-wrap">
-          <div className="column second select-container">
-            <p>From:</p>
-            <select
-              value={firstCurrency}
-              name="currency-option-1"
-              className="currency-options"
-              onChange={(e) => setFirstCurrency(e.target.value)}
-            >
-              {/* {currencies.map((currency, index) => (
+      {/* <form onSubmit={chartDataReq}> */}
+      {loading && <Loading />}
+      <div className="column-wrap">
+        <div className="column second select-container">
+          <p>From:</p>
+          <select
+            value={firstCurrency}
+            name="currency-option-1"
+            className="currency-options"
+            onChange={(e) => setFirstCurrency(e.target.value)}
+          >
+            {/* {currencies.map((currency, index) => (
                   <option key={index}>{currency}</option>
                 ))} */}
-              {Currencies.map((currency, index) => (
-                <option key={index}>{currency.value}</option>
-              ))}
-            </select>
-          </div>
-          <div className="column third select-container">
-            <p>To:</p>
-            <select
-              value={secondCurrency}
-              name="currency-option-2"
-              className="currency-options"
-              onChange={(e) => setSecondCurrency(e.target.value)}
-            >
-              {/* {currencies2.map((currency, index) => (
-                  <option key={index}>{currency}</option>
-                ))} */}
-              {physicalCurrencies.map((currency, index) => (
-                <option key={index}>{currency.value}</option>
-              ))}
-            </select>
-          </div>
+            {Currencies.map((currency, index) => (
+              <option key={index}>{currency.value}</option>
+            ))}
+          </select>
         </div>
-        <button onClick={getData}>Data</button>
-      </form>
+        <div className="column third select-container">
+          <p>To:</p>
+          <select
+            value={secondCurrency}
+            name="currency-option-2"
+            className="currency-options"
+            onChange={(e) => setSecondCurrency(e.target.value)}
+          >
+            {/* {currencies2.map((currency, index) => (
+                  <option key={index}>{currency}</option>
+                ))} */}
+            {physicalCurrencies.map((currency, index) => (
+              <option key={index}>{currency.value}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <button onClick={chartDataReq}>Data</button>
+      <div className="dataColumn wrap">
+        {/* <div>
+            {dateArray.map((date, index) => (
+              <div key={index}>
+                <p>{date}</p>
+              </div>
+            ))}
+          </div> */}
+        {dataArray.map((weeklyClose, index) => (
+          <div>
+            <p key={index}>
+              {index + 1}: {weeklyClose},
+            </p>
+          </div>
+        ))}
+      </div>
+      {/* </form> */}
     </div>
   );
-}
+};
 
-export default LineChart
+export default LineChart;

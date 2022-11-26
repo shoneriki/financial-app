@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Loading from "./Loading"
+import Loading from "./Loading";
 
 import ExchangeRate from "./ExchangeRate";
-
 
 // export const Currencies = {
 //   USD: { value: "USD", name: "US Dollars", sign: "$", digital: false },
@@ -39,11 +38,14 @@ export const Currencies = [
   { value: "USDT", name: "Tether", sign: "₮", digital: true },
 ];
 
-export const digitalCurrencies = Currencies.filter((currency) => currency.digital);
-export const physicalCurrencies = Currencies.filter((currency) => !currency.digital);
+export const digitalCurrencies = Currencies.filter(
+  (currency) => currency.digital
+);
+export const physicalCurrencies = Currencies.filter(
+  (currency) => !currency.digital
+);
 
-const CurrencyConverter = () => {
-
+const CurrencyConverter = ({ loading, setLoading }) => {
   // change names later?
   const [primaryCurrency, setPrimaryCurrency] = useState("USD");
   const [secondaryCurrency, setSecondaryCurrency] = useState("JPY");
@@ -51,7 +53,6 @@ const CurrencyConverter = () => {
   const [amount, setAmount] = useState(1);
   const [exchangeRate, setExchangeRate] = useState(0);
   const [result, setResult] = useState(0);
-  const [loading, setLoading] = useState(false)
 
   const convert = () => {
     const options = {
@@ -66,7 +67,6 @@ const CurrencyConverter = () => {
     axios
       .request(options)
       .then((response) => {
-        setLoading(true)
         console.log("response:", response);
         console.log(response.data);
         if (
@@ -90,11 +90,12 @@ const CurrencyConverter = () => {
         console.error(error);
       })
       .finally(() => {
-        setLoading(false)
+        setLoading(false);
       });
   };
 
   const formHandler = (e) => {
+    setLoading(true);
     e.preventDefault();
     console.log("formHandler entered");
   };
@@ -103,7 +104,10 @@ const CurrencyConverter = () => {
     <div className="wrapper">
       <div className="currency-converter">
         <h2>Currency Converter</h2>
-        <p className="forDesktop"> Please enter an amount and currency and press enter</p>
+        <p className="forDesktop">
+          {" "}
+          Please enter an amount and currency and press enter
+        </p>
         <form onSubmit={formHandler}>
           <div className="column-wrap">
             <div className="column first">
@@ -126,11 +130,9 @@ const CurrencyConverter = () => {
                 {/* {currencies.map((currency, index) => (
                   <option key={index}>{currency}</option>
                 ))} */}
-                {
-                  Currencies.map((currency,index) => (
-                    <option key={index}>{currency.value}</option>
-                  ))
-                }
+                {Currencies.map((currency, index) => (
+                  <option key={index}>{currency.value}</option>
+                ))}
               </select>
             </div>
             <div className="column third select-container">
@@ -144,11 +146,9 @@ const CurrencyConverter = () => {
                 {/* {currencies2.map((currency, index) => (
                   <option key={index}>{currency}</option>
                 ))} */}
-                {
-                  physicalCurrencies.map((currency, index) => (
-                    <option key={index}>{currency.value}</option>
-                  ))
-                }
+                {physicalCurrencies.map((currency, index) => (
+                  <option key={index}>{currency.value}</option>
+                ))}
               </select>
             </div>
           </div>
