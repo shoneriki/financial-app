@@ -105,7 +105,7 @@ app.get("/data", async (req, res) => {
     url: "https://alpha-vantage.p.rapidapi.com/query",
     port: 443,
     params: {
-      function: "FX_WEEKLY",
+      function: "FX_MONTHLY",
       from_symbol: firstCurrency,
       to_symbol: secondCurrency,
       datatype: "json",
@@ -118,8 +118,8 @@ app.get("/data", async (req, res) => {
   axios
     .request(options)
     .then(function (response) {
-      const responseDataObj = response.data["Time Series FX (Weekly)"]
-
+      const responseDataObj = response.data["Time Series FX (Monthly)"]
+      console.log('responseDataObj', responseDataObj)
       let array = [];
       for (const date in responseDataObj) {
         if (date.includes("2022")) {
@@ -127,7 +127,7 @@ app.get("/data", async (req, res) => {
           array.push(valueObj["4. close"])
         }
       }
-      console.log("new array", array)
+      console.log("new monthly array", array)
       res.json(
         response.data
       )

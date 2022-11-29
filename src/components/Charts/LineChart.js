@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import {
   Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
 } from "chart.js";
 import axios from "axios";
 import {
@@ -17,18 +10,11 @@ import {
 } from "../CurrencyConverter";
 import { ExchangeRate } from "../ExchangeRate";
 import Loading from "../Loading";
+import Data from "../../utils/Data"
 
 import { Line } from "react-chartjs-2";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+
 
 const LineChart = ({ loading, setLoading }) => {
   const [firstCurrency, setFirstCurrency] = useState("USD");
@@ -37,12 +23,21 @@ const LineChart = ({ loading, setLoading }) => {
   const [dataArray, setDataArray] = useState([]);
   const [dateArray, setDateArray] = useState([]);
 
+  /* */
+  const [chartData, setChartData] = useState({});
+
+  const [userData, setUserData] = useState({});
+
+  /* */
+
+
   const getData = async () => {
+
     const options = {
       method: "GET",
       url: "http://localhost:8000/data",
       params: {
-        function: "FX_WEEKLY",
+        function: "FX_MONTHLY",
         from_symbol: firstCurrency,
         to_symbol: secondCurrency,
         datatype: "json",
@@ -52,15 +47,17 @@ const LineChart = ({ loading, setLoading }) => {
         "X-RapidAPI-Host": "alpha-vantage.p.rapidapi.com",
       },
     };
-    axios
+    await axios
       .request(options)
       .then((response) => {
         console.log("response:", response);
-        const responseDataObj = response.data["Time Series FX (Weekly)"];
+        let responseDataObj = response.data["Time Series FX (Monthly)"];
         console.log("responseDataObj", responseDataObj);
-        // let dateArray = [];
+
         let dataArray = [];
+
         let properDataArray = dataArray.reverse();
+
         for (const date in responseDataObj) {
           if (date.includes("2022")) {
             // dateArray.push(date)
@@ -69,8 +66,24 @@ const LineChart = ({ loading, setLoading }) => {
           }
         }
         console.log("new array or dataArray", dataArray);
-        // setDateArray();
         setDataArray(properDataArray);
+        console.log("properDataArray",properDataArray)
+
+        const months = Array.from({ length: 12 }, (item, i) => {
+          return new Date(0, i).toLocaleString("en-US", { month: "long" });
+        });
+        setChartData({
+          lables: months.map((data) => data),
+          datasets:[
+            {
+              label: "Exchange Rate 2022",
+              data: dataArray.map((data) => data)
+            }
+          ]
+        })
+
+      console.log("chartData",chartData)
+
       })
       .catch((error) => {
         console.log("linechart error from the frontend");
@@ -80,15 +93,15 @@ const LineChart = ({ loading, setLoading }) => {
         setLoading(false);
       });
   };
-  const chartDataReq = (e) => {
+  const chartDataReq = () => {
     // e.preventDefault()
     setLoading(true);
     getData();
   };
 
+
   return (
     <div className="lineChart-wrap">
-      {/* <form onSubmit={chartDataReq}> */}
       {loading && <Loading />}
       <div className="column-wrap">
         <div className="column second select-container">
@@ -99,7 +112,7 @@ const LineChart = ({ loading, setLoading }) => {
             className="currency-options"
             onChange={(e) => setFirstCurrency(e.target.value)}
           >
-            {Currencies.map((currency, index) => (
+            {physicalCurrencies.map((currency, index) => (
               <option key={index}>{currency.value}</option>
             ))}
           </select>
@@ -120,20 +133,17 @@ const LineChart = ({ loading, setLoading }) => {
       </div>
       <button onClick={chartDataReq}>Weekly Exchange</button>
       <div className="dataColumn wrap">
-        {/* <div>
-            {dateArray.map((date, index) => (
-              <div key={index}>
-                <p>{date}</p>
-              </div>
-            ))}
-          </div> */}
-        {dataArray.map((weeklyClose, index) => (
+        <div>
+          {/* {dataArray &&
+              <Line data={dataArray}/>
+            } */}
+          {dataArray.map((monthlyClose, index) => (
             <p key={index}>
-              {index + 1}: {weeklyClose},
+              {index + 1}: {monthlyClose},
             </p>
-        ))}
+          ))}
+        </div>
       </div>
-      {/* </form> */}
     </div>
   );
 };
