@@ -6,6 +6,7 @@
 .pnp.js
 notes.txt
 .env
+utils/Data.js
 
 
 # testing

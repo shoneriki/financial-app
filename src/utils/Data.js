@@ -1,5 +1,3 @@
-/* PedroTech*/
-
 export const UserData = [
   {
     id: 1,
