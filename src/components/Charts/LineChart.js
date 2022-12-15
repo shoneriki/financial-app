@@ -72,15 +72,16 @@ const LineChart = ({ loading, setLoading }) => {
         const months = Array.from({ length: 12 }, (item, i) => {
           return new Date(0, i).toLocaleString("en-US", { month: "long" });
         });
-        setChartData({
-          lables: months.map((data) => data),
-          datasets:[
-            {
-              label: "Exchange Rate 2022",
-              data: dataArray.map((data) => data)
-            }
-          ]
-        })
+        // setChartData({
+        //   lables: months.map((data) => data),
+        //   datasets:[
+        //     {
+        //       label: "Exchange Rate 2022",
+        //       data: dataArray.map((data) => data)
+        //     }
+        //   ]
+        // })
+        setChartData(dataArray)
 
       console.log("chartData",chartData)
 
@@ -97,6 +98,59 @@ const LineChart = ({ loading, setLoading }) => {
     // e.preventDefault()
     setLoading(true);
     getData();
+  };
+
+  const months = Array.from({ length: 12 }, (item, i) => {
+    return new Date(0, i).toLocaleString("en-US", { month: "long" });
+  });
+
+  let currencyData = {
+    labels: months.map((month) => month),
+    datasets: [
+      {
+        label: `Monthly Currency Exchange : ${firstCurrency} - ${secondCurrency}`,
+        data: dataArray.map((exchange) => exchange),
+        backgroundColor: [
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 159, 64, 0.2)",
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+        ],
+        borderColor: [
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  var chartOptions = {
+    maintainAspectRatio: false,
+    scales: {},
+    legend: {
+      labels: {
+        fontSize: 25,
+      },
+    },
   };
 
 
@@ -131,17 +185,22 @@ const LineChart = ({ loading, setLoading }) => {
           </select>
         </div>
       </div>
-      <button onClick={chartDataReq}>Weekly Exchange</button>
+      <button onClick={chartDataReq}>Monthly Exchange</button>
       <div className="dataColumn wrap">
-        <div>
+        <div className="lineChart">
           {/* {dataArray &&
               <Line data={dataArray}/>
             } */}
-          {dataArray.map((monthlyClose, index) => (
+          {/* {dataArray.map((monthlyClose, index) => (
             <p key={index}>
               {index + 1}: {monthlyClose},
             </p>
-          ))}
+          ))} */}
+          <Line
+            data={currencyData}
+            height={400}
+            options={chartOptions}
+          />
         </div>
       </div>
     </div>

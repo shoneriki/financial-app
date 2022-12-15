@@ -45,7 +45,7 @@ const months = Array.from({ length: 12 }, (item, i) => {
         {/* <News /> */}
         <div className="right">
           <LineChart loading={loading} setLoading={setLoading} />
-          {/* <BarChart chartData={userData} /> */}
+          {/* <BarChart /> */}
         </div>
       </div>
 
