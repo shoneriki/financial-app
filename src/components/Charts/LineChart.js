@@ -67,8 +67,8 @@ const LineChart = ({ loading, setLoading }) => {
           }
         }
         console.log("new array or dataArray", dataArray);
-        setDataArray(properDataArray);
         console.log("properDataArray", properDataArray)
+        setDataArray(properDataArray.reverse());
 
         const months = Array.from({ length: 12 }, (item, i) => {
           return new Date(0, i).toLocaleString("en-US", { month: "long" });
