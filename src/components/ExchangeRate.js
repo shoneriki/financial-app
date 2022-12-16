@@ -13,8 +13,10 @@ const ExchangeRate = ({
   const roundedResult = Math.round(result * 100) / 100;
   const roundedAmount = Math.round(amount * 100) / 100;
   return (
-    <div className="exchange-rate">
-    {(result !== 0) | null && exchangeRate !== 0 ? (
+    <>
+
+      {(result !== 0) | null && exchangeRate !== 0 ? (
+      <div className="exchange-rate">
         <div className="exchange-amount-div">
           <h3>Exchange Rate: {roundedExchange}</h3>
           <p>
@@ -32,11 +34,9 @@ const ExchangeRate = ({
             }{roundedResult}
           </p>
         </div>
-      ) : null}
-      {/* <p>
-        {primaryCurrency} to {secondaryCurrency}
-      </p> */}
-    </div>
+      </div>
+        ) : null}
+    </>
   );
 };
 

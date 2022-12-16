@@ -105,8 +105,7 @@ const CurrencyConverter = ({ loading, setLoading }) => {
       <div className="currency-converter">
         <h2>Currency Converter</h2>
         <p className="forDesktop">
-          {" "}
-          Please enter an amount and currency and press enter
+          Please enter an amount, select currencies and press enter
         </p>
         <form onSubmit={formHandler}>
           <div className="column-wrap">

@@ -58,6 +58,7 @@ const LineChart = ({ loading, setLoading }) => {
 
         let properDataArray = dataArray.reverse();
 
+
         for (const date in responseDataObj) {
           if (date.includes("2022")) {
             // dateArray.push(date)
@@ -67,7 +68,7 @@ const LineChart = ({ loading, setLoading }) => {
         }
         console.log("new array or dataArray", dataArray);
         setDataArray(properDataArray);
-        console.log("properDataArray",properDataArray)
+        console.log("properDataArray", properDataArray)
 
         const months = Array.from({ length: 12 }, (item, i) => {
           return new Date(0, i).toLocaleString("en-US", { month: "long" });
@@ -138,7 +139,8 @@ const LineChart = ({ loading, setLoading }) => {
           "rgba(75, 192, 192, 0.2)",
           "rgba(153, 102, 255, 0.2)",
         ],
-        borderWidth: 1,
+        borderWidth: 5,
+        tension: 0.1,
       },
     ],
   };
@@ -158,6 +160,7 @@ const LineChart = ({ loading, setLoading }) => {
     <div className="lineChart-wrap">
       {loading && <Loading />}
       <div className="column-wrap">
+      <div className="row first-row">
         <div className="column second select-container">
           <p>From:</p>
           <select
@@ -185,17 +188,12 @@ const LineChart = ({ loading, setLoading }) => {
           </select>
         </div>
       </div>
-      <button onClick={chartDataReq}>Monthly Exchange</button>
+        <div className="row second-row">
+          <button onClick={chartDataReq}>Monthly Exchange</button>
+        </div>
+      </div>
       <div className="dataColumn wrap">
         <div className="lineChart">
-          {/* {dataArray &&
-              <Line data={dataArray}/>
-            } */}
-          {/* {dataArray.map((monthlyClose, index) => (
-            <p key={index}>
-              {index + 1}: {monthlyClose},
-            </p>
-          ))} */}
           <Line
             data={currencyData}
             height={400}
@@ -204,6 +202,8 @@ const LineChart = ({ loading, setLoading }) => {
         </div>
       </div>
     </div>
+
+
   );
 };
 
