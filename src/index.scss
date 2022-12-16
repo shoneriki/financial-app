@@ -5,7 +5,7 @@
   --newsfeed-bg: #E27D60;
   --currency-converter-bg: #C38D9E;
   --exchange-rate-bg: #41B3A3;
-  --left-height: 64vh;
+  --left-height: 66vh;
 }
 
 #root {
@@ -163,7 +163,7 @@ code {
 .exchange-rate {
   background-color: var(--exchange-rate-bg);
   min-height: calc(var(--left-height) / 2);
-  border-radius:0 0 0 16px;
+  border-radius: 0 0 0 16px;
   padding: 8px;
   display: flex;
   flex-direction: column;
