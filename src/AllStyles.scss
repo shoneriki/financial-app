@@ -1,0 +1,150 @@
+:root {
+  --body-bg: #84CDCA;
+  --newsfeed-bg: #E27D60;
+  --currency-converter-bg: #C38D9E;
+  --exchange-rate-bg: #41B3A3;
+  --container-height: 60vh;
+  --container-width: 60%;
+  --left-height: 66vh;
+
+  --nondesktop-height: 20vh;
+  --tablet-height: 50vh;
+}
+
+
+/*loading */
+.loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.834) url("https://media.giphy.com/media/8agqybiK5LW8qrG3vJ/giphy.gif") center no-repeat;
+  background-color: #F8F5FA;
+  z-index: 10000;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  border: 8px solid;
+  border-color: #3d5af1 transparent #3d5af1 transparent;
+  border-radius: 50%;
+  animation: spin-anim 1.2s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes spin-anim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* end of loading styles*/
+
+
+/*1 start----------------------------------------------------------------------*/
+@media only screen and (max-width: 667px) {
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    max-width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--body-bg);
+    overflow: hidden;
+    color: white;
+    z-index: 0;
+  }
+
+  // .body {
+  //   width: 100%;
+  //   max-height: 100vh;
+  // }
+
+  // .flex {
+  //   display: flex;
+  //   flex-direction: column;
+  //   width: 78%;
+  //   min-height: var(--nondesktop-height);
+  //   margin: 0 16px;
+  // }
+
+//   .forDesktop {
+//     display: none;
+//   }
+
+
+//   .currency-converter {
+//     border-radius: 16px 16px 0 0;
+
+
+//     form {
+//       display: flex;
+//       justify-content: space-between;
+//     }
+
+//     .btn-wrap {
+//       display: flex;
+//       width: 100%;
+
+//       button {
+//         width: 100%;
+//         background-color: #bada55;
+//         border: none;
+//         border-radius: 4px;
+//         margin: 8px 0;
+//         display: block;
+//       }
+//     }
+//     input {
+//       text-align: center;
+//       width: 50%;
+//     }
+//   }
+
+//   .exchange-rate {
+//     border-radius: 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//   }
+
+//   .right {
+//     border-radius: 0 0 16px 16px;
+
+//     .row {
+//       display: flex;
+//     }
+
+
+//     .lineChart {
+//       height: 30vh;
+//       display: none;
+//     }
+//   }
+
+//   .news-feed {
+//     border-radius: 0 0 16px 16px;
+//   }
+
+//   .news-article {
+//     margin: 8px 0 0 0;
+//   }
+/*1.end----------------------------------------------------------------------------*/
+}
