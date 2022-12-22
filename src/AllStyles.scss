@@ -101,7 +101,7 @@
     font-size: 16px;
     h2{
       margin: 0 0 16px 0;
-      font-size: 24px;
+      font-size: 20px;
     }
     p{
       margin: 0;
@@ -140,7 +140,7 @@
         color: white;
         border: none;
         border-radius: 8px;
-        margin: 8px 0;
+        margin: 16px 0;
         display: block;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
       }
@@ -173,16 +173,19 @@
     background-color: var(--newsfeed-bg);
     padding: 16px;
 
-    .linechart-wrap {
-
+    .lineChart-wrap .column-wrap {
+      text-align: center;
     }
-    .row.first-row {
+
+    .first-row {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-around;
+      text-align: center;
+      margin: 0;
       .column p{
         margin: 0;
-        width: 80%;
+        width: 100%;
       }
     }
 
@@ -197,7 +200,7 @@
         color: white;
         border: none;
         border-radius: 8px;
-        margin: 8px 0;
+        margin: 16px 0;
         display: block;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
       }
