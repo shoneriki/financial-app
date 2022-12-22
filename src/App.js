@@ -8,24 +8,20 @@ import styled from "styled-components"
 const AppContainer = styled.div`
 
 `
-
-
 function App() {
   const [loading, setLoading] = useState(false)
   return (
-    <>
+    <div className="flex">
       {loading && <Loading />}
-      <div className="flex">
-        <div className="left">
-          <LeftSide loading={loading} setLoading={setLoading} />
-        </div>
-        {/* <News /> */}
-        <div className="right">
-          <LineChart loading={loading} setLoading={setLoading} />
-          {/* <BarChart /> */}
-        </div>
+      <div className="left">
+        <LeftSide loading={loading} setLoading={setLoading} />
       </div>
-    </>
+      {/* <News /> */}
+      <div className="right">
+        <LineChart loading={loading} setLoading={setLoading} />
+        {/* <BarChart /> */}
+      </div>
+    </div>
   );
 }
 
