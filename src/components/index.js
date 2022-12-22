@@ -1,8 +1,7 @@
 import News from "./News";
-import CurrencyConverter from "./CurrencyConverter";
+import LeftSide from "./LeftSide";
 import ExchangeRate from "./ExchangeRate";
-import LineChart from "./Charts/LineChart"
-import Loading from "./Loading"
+import LineChart from "./Charts/LineChart";
+import Loading from "./Loading";
 
-
-export { News, CurrencyConverter, ExchangeRate, Loading, LineChart };
+export { News, LeftSide, ExchangeRate, Loading, LineChart };

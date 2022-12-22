@@ -45,7 +45,7 @@ export const physicalCurrencies = Currencies.filter(
   (currency) => !currency.digital
 );
 
-const CurrencyConverter = ({ loading, setLoading }) => {
+const LeftSide = ({ loading, setLoading }) => {
   // change names later?
   const [primaryCurrency, setPrimaryCurrency] = useState("USD");
   const [secondaryCurrency, setSecondaryCurrency] = useState("JPY");
@@ -169,4 +169,4 @@ const CurrencyConverter = ({ loading, setLoading }) => {
   );
 };
 
-export default CurrencyConverter;
+export default LeftSide;

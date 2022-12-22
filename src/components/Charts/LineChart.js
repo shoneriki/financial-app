@@ -1,19 +1,30 @@
 import React, { useState } from "react";
-import {
-  Chart as ChartJS,
-} from "chart.js";
 import axios from "axios";
-import {
-  Currencies,
-  digitalCurrencies,
-  physicalCurrencies,
-} from "../CurrencyConverter";
+import { Currencies, digitalCurrencies, physicalCurrencies } from "../LeftSide";
 import { ExchangeRate } from "../ExchangeRate";
 import Loading from "../Loading";
-import Data from "../../utils/Data"
-
+import Data from "../../utils/Data";
 import { Line } from "react-chartjs-2";
 
+  import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from "chart.js";
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
 
 
 const LineChart = ({ loading, setLoading }) => {
@@ -31,8 +42,8 @@ const LineChart = ({ loading, setLoading }) => {
   /* */
 
 
-  const getData = async () => {
 
+  const getData = async () => {
     const options = {
       method: "GET",
       url: "http://localhost:8000/data",
@@ -58,7 +69,6 @@ const LineChart = ({ loading, setLoading }) => {
 
         let properDataArray = dataArray.reverse();
 
-
         for (const date in responseDataObj) {
           if (date.includes("2022")) {
             // dateArray.push(date)
@@ -67,7 +77,7 @@ const LineChart = ({ loading, setLoading }) => {
           }
         }
         console.log("new array or dataArray", dataArray);
-        console.log("properDataArray", properDataArray)
+        console.log("properDataArray", properDataArray);
         setDataArray(properDataArray.reverse());
 
         const months = Array.from({ length: 12 }, (item, i) => {
@@ -82,10 +92,9 @@ const LineChart = ({ loading, setLoading }) => {
         //     }
         //   ]
         // })
-        setChartData(dataArray)
+        setChartData(dataArray);
 
-      console.log("chartData",chartData)
-
+        console.log("chartData", chartData);
       })
       .catch((error) => {
         console.log("linechart error from the frontend");
@@ -155,55 +164,48 @@ const LineChart = ({ loading, setLoading }) => {
     },
   };
 
-
   return (
     <div className="lineChart-wrap">
       {loading && <Loading />}
       <div className="column-wrap">
-      <div className="row first-row">
-        <div className="column second select-container">
-          <p>From:</p>
-          <select
-            value={firstCurrency}
-            name="currency-option-1"
-            className="currency-options"
-            onChange={(e) => setFirstCurrency(e.target.value)}
-          >
-            {physicalCurrencies.map((currency, index) => (
-              <option key={index}>{currency.value}</option>
-            ))}
-          </select>
+        <div className="row first-row">
+          <div className="column second select-container">
+            <p>From:</p>
+            <select
+              value={firstCurrency}
+              name="currency-option-1"
+              className="currency-options"
+              onChange={(e) => setFirstCurrency(e.target.value)}
+            >
+              {physicalCurrencies.map((currency, index) => (
+                <option key={index}>{currency.value}</option>
+              ))}
+            </select>
+          </div>
+          <div className="column third select-container">
+            <p>To:</p>
+            <select
+              value={secondCurrency}
+              name="currency-option-2"
+              className="currency-options"
+              onChange={(e) => setSecondCurrency(e.target.value)}
+            >
+              {physicalCurrencies.map((currency, index) => (
+                <option key={index}>{currency.value}</option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div className="column third select-container">
-          <p>To:</p>
-          <select
-            value={secondCurrency}
-            name="currency-option-2"
-            className="currency-options"
-            onChange={(e) => setSecondCurrency(e.target.value)}
-          >
-            {physicalCurrencies.map((currency, index) => (
-              <option key={index}>{currency.value}</option>
-            ))}
-          </select>
-        </div>
-      </div>
         <div className="row second-row">
           <button onClick={chartDataReq}>Monthly Exchange</button>
         </div>
       </div>
       <div className="dataColumn wrap">
         <div className="lineChart">
-          <Line
-            data={currencyData}
-            height={400}
-            options={chartOptions}
-          />
+          <Line data={currencyData} height={400} options={chartOptions} />
         </div>
       </div>
     </div>
-
-
   );
 };
 

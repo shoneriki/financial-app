@@ -1,21 +1,23 @@
 
 import {useState, useEffect} from "react"
-import './App.css';
-import { News, CurrencyConverter, ExchangeRate, Loading, LineChart } from "./components";
+import { News, LeftSide, ExchangeRate, Loading, LineChart } from "./components";
+import styled from "styled-components"
 
-import BarChart from "./components/Charts/BarChart"
-import {UserData} from "./utils/Data"
-import './App.css';
+
+
+const AppContainer = styled.div`
+
+`
 
 
 function App() {
   const [loading, setLoading] = useState(false)
   return (
-    <div className="body">
+    <>
       {loading && <Loading />}
       <div className="flex">
         <div className="left">
-          <CurrencyConverter loading={loading} setLoading={setLoading} />
+          <LeftSide loading={loading} setLoading={setLoading} />
         </div>
         {/* <News /> */}
         <div className="right">
@@ -23,8 +25,7 @@ function App() {
           {/* <BarChart /> */}
         </div>
       </div>
-
-    </div>
+    </>
   );
 }
 

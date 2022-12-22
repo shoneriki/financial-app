@@ -1,5 +1,5 @@
 import React from "react";
-import { Currencies } from "./CurrencyConverter";
+import { Currencies } from "./LeftSide";
 
 const ExchangeRate = ({
   exchangeRate,
@@ -14,28 +14,27 @@ const ExchangeRate = ({
   const roundedAmount = Math.round(amount * 100) / 100;
   return (
     <>
-
       {(result !== 0) | null && exchangeRate !== 0 ? (
-      <div className="exchange-rate">
-        <div className="exchange-amount-div">
-          <h3>Exchange Rate: {roundedExchange}</h3>
-          <p>
-            {Currencies.map((currency) => {
-              if(currency.value === primaryCurrency) {
-                return currency.sign
-              }
-            })}{roundedAmount}
-            = {
-              Currencies.map((currency) => {
-                if(currency.value === secondaryCurrency) {
-                  return currency.sign
+        <div className="exchange-rate">
+          <div className="exchange-amount-div">
+            <h3>Exchange Rate: {roundedExchange}</h3>
+            <p>
+              {Currencies.map((currency) => {
+                if (currency.value === primaryCurrency) {
+                  return currency.sign;
                 }
-              })
-            }{roundedResult}
-          </p>
+              })}
+              {roundedAmount}={" "}
+              {Currencies.map((currency) => {
+                if (currency.value === secondaryCurrency) {
+                  return currency.sign;
+                }
+              })}
+              {roundedResult}
+            </p>
+          </div>
         </div>
-      </div>
-        ) : null}
+      ) : null}
     </>
   );
 };
