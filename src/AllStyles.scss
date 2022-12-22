@@ -82,6 +82,7 @@
   /* Original left side; now top two containers for currency and the exchange result*/
 
   .left {
+    height: 100%;
 
   }
 
@@ -89,7 +90,7 @@
 
   .flex {
     border-radius: 16px;
-    height: 80%;
+    height: 100%;
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   }
@@ -257,14 +258,16 @@
     z-index: 0;
   }
 
-    .left {}
+    .left {
+      height: 100%;
+    }
 
 
 
     .flex {
       display: flex;
       border-radius: 16px;
-      height: 80%;
+      height: 100%;
       width: 100%;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     }
@@ -348,7 +351,7 @@
       text-align: center;
       padding: 36px 0;
       width: 100%;
-      height: calc(var(--container-height) / 2);
+      height: 100%;
       background-color: var(--exchange-rate-bg);
     }
 
