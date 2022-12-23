@@ -44,6 +44,7 @@ const LineChart = ({ loading, setLoading }) => {
 
 
   const getData = async () => {
+    setChartData(null)
     const options = {
       method: "GET",
       url: "http://localhost:8000/data",
@@ -105,10 +106,21 @@ const LineChart = ({ loading, setLoading }) => {
       });
   };
   const chartDataReq = () => {
-    // e.preventDefault()
-    setLoading(true);
+    setLoading(true)
     getData();
   };
+
+  //  const handleFirstCurrencyChange = (event) => {
+  //    setChartData(null);
+  //    setFirstCurrency(event.target.value);
+  //    chartDataReq();
+  //  };
+
+  //  const handleSecondCurrencyChange = (event) => {
+  //    setChartData(null);
+  //    setSecondCurrency(event.target.value);
+  //    chartDataReq();
+  //  };
 
   const months = Array.from({ length: 12 }, (item, i) => {
     return new Date(0, i).toLocaleString("en-US", { month: "long" });
@@ -159,7 +171,7 @@ const LineChart = ({ loading, setLoading }) => {
     scales: {},
     legend: {
       labels: {
-        fontSize: 25,
+        fontSize: 8,
       },
     },
   };

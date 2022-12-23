@@ -16,7 +16,6 @@ const ExchangeRate = ({
     <>
       {(result !== 0) | null && exchangeRate !== 0 ? (
         <div className="exchange-rate">
-          <div className="exchange-amount-div">
             <h3>Exchange Rate: {roundedExchange}</h3>
             <p>
               {Currencies.map((currency) => {
@@ -32,7 +31,6 @@ const ExchangeRate = ({
               })}
               {roundedResult}
             </p>
-          </div>
         </div>
       ) : null}
     </>
