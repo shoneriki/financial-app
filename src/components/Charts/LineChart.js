@@ -180,36 +180,37 @@ const LineChart = ({ loading, setLoading }) => {
     <div className="lineChart-wrap">
       {loading && <Loading />}
       <div className="column-wrap">
-        <div className="row first-row">
-          <div className="column second select-container">
-            <p>From:</p>
-            <select
-              value={firstCurrency}
-              name="currency-option-1"
-              className="currency-options"
-              onChange={(e) => setFirstCurrency(e.target.value)}
-              // onChange={handleFirstCurrencyChange}
-            >
-              {physicalCurrencies.map((currency, index) => (
-                <option key={index}>{currency.value}</option>
-              ))}
-            </select>
+        <h3> Monthly Exchange Data</h3>
+          <div className="row first-row">
+            <div className="column second select-container">
+              <p>From:</p>
+              <select
+                value={firstCurrency}
+                name="currency-option-1"
+                className="currency-options"
+                onChange={(e) => setFirstCurrency(e.target.value)}
+                // onChange={handleFirstCurrencyChange}
+              >
+                {physicalCurrencies.map((currency, index) => (
+                  <option key={index}>{currency.value}</option>
+                ))}
+              </select>
+            </div>
+            <div className="column third select-container">
+              <p>To:</p>
+              <select
+                value={secondCurrency}
+                name="currency-option-2"
+                className="currency-options"
+                onChange={(e) => setSecondCurrency(e.target.value)}
+                // onChange={handleSecondCurrencyChange}
+              >
+                {physicalCurrencies.map((currency, index) => (
+                  <option key={index}>{currency.value}</option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="column third select-container">
-            <p>To:</p>
-            <select
-              value={secondCurrency}
-              name="currency-option-2"
-              className="currency-options"
-              onChange={(e) => setSecondCurrency(e.target.value)}
-              // onChange={handleSecondCurrencyChange}
-            >
-              {physicalCurrencies.map((currency, index) => (
-                <option key={index}>{currency.value}</option>
-              ))}
-            </select>
-          </div>
-        </div>
         <div className="row second-row">
           <button onClick={chartDataReq}>Monthly Exchange</button>
         </div>
