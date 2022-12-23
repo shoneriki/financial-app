@@ -187,8 +187,8 @@ const LineChart = ({ loading, setLoading }) => {
               value={firstCurrency}
               name="currency-option-1"
               className="currency-options"
-              // onChange={(e) => setFirstCurrency(e.target.value)}
-              onChange={handleFirstCurrencyChange}
+              onChange={(e) => setFirstCurrency(e.target.value)}
+              // onChange={handleFirstCurrencyChange}
             >
               {physicalCurrencies.map((currency, index) => (
                 <option key={index}>{currency.value}</option>
@@ -201,8 +201,8 @@ const LineChart = ({ loading, setLoading }) => {
               value={secondCurrency}
               name="currency-option-2"
               className="currency-options"
-              // onChange={(e) => setSecondCurrency(e.target.value)}
-              onChange={handleSecondCurrencyChange}
+              onChange={(e) => setSecondCurrency(e.target.value)}
+              // onChange={handleSecondCurrencyChange}
             >
               {physicalCurrencies.map((currency, index) => (
                 <option key={index}>{currency.value}</option>
