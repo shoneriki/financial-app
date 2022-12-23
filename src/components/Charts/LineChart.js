@@ -110,17 +110,17 @@ const LineChart = ({ loading, setLoading }) => {
     getData();
   };
 
-  //  const handleFirstCurrencyChange = (event) => {
-  //    setChartData(null);
-  //    setFirstCurrency(event.target.value);
-  //    chartDataReq();
-  //  };
+   const handleFirstCurrencyChange = (event) => {
+     setChartData(null);
+     setFirstCurrency(event.target.value);
+     chartDataReq();
+   };
 
-  //  const handleSecondCurrencyChange = (event) => {
-  //    setChartData(null);
-  //    setSecondCurrency(event.target.value);
-  //    chartDataReq();
-  //  };
+   const handleSecondCurrencyChange = (event) => {
+     setChartData(null);
+     setSecondCurrency(event.target.value);
+     chartDataReq();
+   };
 
   const months = Array.from({ length: 12 }, (item, i) => {
     return new Date(0, i).toLocaleString("en-US", { month: "long" });
@@ -187,7 +187,8 @@ const LineChart = ({ loading, setLoading }) => {
               value={firstCurrency}
               name="currency-option-1"
               className="currency-options"
-              onChange={(e) => setFirstCurrency(e.target.value)}
+              // onChange={(e) => setFirstCurrency(e.target.value)}
+              onChange={handleFirstCurrencyChange}
             >
               {physicalCurrencies.map((currency, index) => (
                 <option key={index}>{currency.value}</option>
@@ -200,7 +201,8 @@ const LineChart = ({ loading, setLoading }) => {
               value={secondCurrency}
               name="currency-option-2"
               className="currency-options"
-              onChange={(e) => setSecondCurrency(e.target.value)}
+              // onChange={(e) => setSecondCurrency(e.target.value)}
+              onChange={handleSecondCurrencyChange}
             >
               {physicalCurrencies.map((currency, index) => (
                 <option key={index}>{currency.value}</option>
