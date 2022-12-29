@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/financial-app/static/css/main.4691c8d5.css",
+    "main.js": "/financial-app/static/js/main.94b78d1c.js",
+    "index.html": "/financial-app/index.html",
+    "main.4691c8d5.css.map": "/financial-app/static/css/main.4691c8d5.css.map",
+    "main.94b78d1c.js.map": "/financial-app/static/js/main.94b78d1c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4691c8d5.css",
+    "static/js/main.94b78d1c.js"
+  ]
+}
