@@ -53,13 +53,40 @@
 /* end of loading styles*/
 
 /* 0 start */
+@media (min-width: 260px) and (max-width: 360) {
+
+  body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--body-bg);
+      overflow: hidden;
+      color: white;
+      z-index: 0;
+    }
+  h2 {
+    font-size: 12px;
+  }
+  h3{
+    font-size:  12px;
+  }
+}
 
 
 /* 0 end*/
 
 
 /*1 start----------------------------------------------------------------------*/
-@media (min-width: 375px) and (max-width: 666px) {
+@media (min-width: 360px) and (max-width: 653px) {
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -229,8 +256,8 @@
     .lineChart {
       display: flex;
       align-items: stretch;
-      width: 288px;
       height: 160px;
+      width: 294px;
     }
 
     canvas {
@@ -257,7 +284,7 @@
 
 /*2 start----------------------------------------------------------------------*/
 
-@media (min-width: 666px)  {
+@media (min-width: 653px)  {
 
   body {
     max-width: 100%;
@@ -298,12 +325,6 @@
         flex-direction: column;
       }
 
-      // .currency-converter,
-      // .exchange-rate {
-
-      //   flex-grow: 1;
-      //   flex-shrink: 1;
-      // }
 
     .forDesktop {
       display: none;
