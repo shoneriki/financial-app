@@ -88,20 +88,12 @@ const LineChart = ({ loading, setLoading }) => {
         console.log("tempDataArray", tempDataArray);
         setDataArray(tempDataArray.reverse());
 
-        const months = Array.from({ length: 12 }, (item, i) => {
-          return new Date(0, i).toLocaleString("en-US", { month: "long" });
-        });
+        // const months = Array.from({ length: 12 }, (item, i) => {
+        //   return new Date(0, i).toLocaleString("en-US", { month: "long" });
+        // });
+
         setChartData(dataArray);
 
-        // setChartData({
-        //   labels: dateArray.map((month) => month),
-        //   datasets:[
-        //     {
-        //       label: "Exchange Rate 2022",
-        //       data: dataArray.map((data) => data)
-        //     }
-        //   ]
-        // })
         console.log("chartData", chartData);
       })
       .catch((error) => {
