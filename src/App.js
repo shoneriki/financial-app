@@ -1,17 +1,8 @@
 
-import {useState, useEffect} from "react"
+import {useState} from "react"
 import { News, LeftSide, ExchangeRate, Loading, LineChart } from "./components";
 import styled from "styled-components"
 
-
-
-const AppContainer =  ({loading, setLoading}) => {
-  return(
-    <>
-
-    </>
-  )
-}
 
 function App() {
   const [loading, setLoading] = useState(false)

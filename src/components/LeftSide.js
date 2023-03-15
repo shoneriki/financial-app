@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 
@@ -50,6 +50,8 @@ const LeftSide = ({ loading, setLoading }) => {
   const [primaryCurrency, setPrimaryCurrency] = useState("USD");
   const [secondaryCurrency, setSecondaryCurrency] = useState("JPY");
 
+  const [showExchangeRate, setShowExchangeRate] = useState(false)
+
   const [amount, setAmount] = useState(1);
   const [exchangeRate, setExchangeRate] = useState(0);
   const [result, setResult] = useState(0);
@@ -81,6 +83,8 @@ const LeftSide = ({ loading, setLoading }) => {
               "5. Exchange Rate"
             ] * amount
           );
+          console.log("params:", options);
+          console.log("response data:", response.data);
           // console.log("exchangeRate:", exchangeRate);
           // console.log("setResult", result);
         }
@@ -93,6 +97,17 @@ const LeftSide = ({ loading, setLoading }) => {
         setLoading(false);
       });
   };
+
+useEffect(() => {
+  if (primaryCurrency !== secondaryCurrency) {
+    setShowExchangeRate(true);
+    convert()
+  } else {
+    setShowExchangeRate(false);
+  }
+}, [primaryCurrency, secondaryCurrency]);
+
+
 
   const formHandler = (e) => {
     setLoading(true);
@@ -158,13 +173,17 @@ const LeftSide = ({ loading, setLoading }) => {
           </div>
         </form>
       </div>
-      <ExchangeRate
-        exchangeRate={exchangeRate}
-        primaryCurrency={primaryCurrency}
-        secondaryCurrency={secondaryCurrency}
-        result={result}
-        amount={amount}
-      />
+      {
+        showExchangeRate && (
+          <ExchangeRate
+            exchangeRate={exchangeRate}
+            primaryCurrency={primaryCurrency}
+            secondaryCurrency={secondaryCurrency}
+            result={result}
+            amount={amount}
+          />
+        )
+      }
     </div>
   );
 };
