@@ -1,13 +1,21 @@
 {
   "files": {
-    "main.css": "/financial-app/static/css/main.4691c8d5.css",
-    "main.js": "/financial-app/static/js/main.94b78d1c.js",
-    "index.html": "/financial-app/index.html",
-    "main.4691c8d5.css.map": "/financial-app/static/css/main.4691c8d5.css.map",
-    "main.94b78d1c.js.map": "/financial-app/static/js/main.94b78d1c.js.map"
+    "main.css": "/static/css/main.9ed280f2.css",
+    "main.js": "/static/js/main.efe13180.js",
+    "static/media/blueprint-icons-20.eot?": "/static/media/blueprint-icons-20.493e70cebc4e49062a16.eot",
+    "static/media/blueprint-icons-20.ttf?": "/static/media/blueprint-icons-20.982ea1c161b2804b72da.ttf",
+    "static/media/blueprint-icons-16.eot?": "/static/media/blueprint-icons-16.fde8cacb8868288ed9d1.eot",
+    "static/media/blueprint-icons-16.ttf?": "/static/media/blueprint-icons-16.eb652aad9a929d252b80.ttf",
+    "static/media/blueprint-icons-20.woff?": "/static/media/blueprint-icons-20.003685e3c699021a45e0.woff",
+    "static/media/blueprint-icons-16.woff?": "/static/media/blueprint-icons-16.869b8978b3bcfa884f8e.woff",
+    "static/media/blueprint-icons-20.woff2?": "/static/media/blueprint-icons-20.60be483452f2e760526f.woff2",
+    "static/media/blueprint-icons-16.woff2?": "/static/media/blueprint-icons-16.5a0658c2b025e421ebc2.woff2",
+    "index.html": "/index.html",
+    "main.9ed280f2.css.map": "/static/css/main.9ed280f2.css.map",
+    "main.efe13180.js.map": "/static/js/main.efe13180.js.map"
   },
   "entrypoints": [
-    "static/css/main.4691c8d5.css",
-    "static/js/main.94b78d1c.js"
+    "static/css/main.9ed280f2.css",
+    "static/js/main.efe13180.js"
   ]
 }
