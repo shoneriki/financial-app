@@ -116,75 +116,77 @@ useEffect(() => {
   };
 
   return (
-    <div className="wrapper">
-      <div className="currency-converter">
-        <h2>Currency Converter</h2>
-        <p className="forDesktop">
-          Please enter an amount, select currencies and press enter
-        </p>
-        <form onSubmit={formHandler}>
-          <div className="column-wrap">
-            <div className="column first">
-              <p>Amount:</p>
-              <input
-                type="number"
-                name="currency-amount-1"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-              />
-            </div>
-            <div className="column second select-container">
-              <p>From:</p>
-              <select
-                value={primaryCurrency}
-                name="currency-option-1"
-                className="currency-options"
-                onChange={(e) => setPrimaryCurrency(e.target.value)}
-              >
-                {/* {currencies.map((currency, index) => (
-                  <option key={index}>{currency}</option>
-                ))} */}
-                {Currencies.map((currency, index) => (
-                  <option key={index}>{currency.value}</option>
-                ))}
-              </select>
-            </div>
-            <div className="column third select-container">
-              <p>To:</p>
-              <select
-                value={secondaryCurrency}
-                name="currency-option-2"
-                className="currency-options"
-                onChange={(e) => setSecondaryCurrency(e.target.value)}
-              >
-                {/* {currencies2.map((currency, index) => (
-                  <option key={index}>{currency}</option>
-                ))} */}
-                {physicalCurrencies.map((currency, index) => (
-                  <option key={index}>{currency.value}</option>
-                ))}
-              </select>
-            </div>
+    <>
+    <div className="currency-converter">
+      <h2>Currency Converter</h2>
+      <p className="forDesktop">
+        Please enter an amount, select currencies and press enter
+      </p>
+      <form onSubmit={formHandler}>
+        <div className="column-wrap">
+          <div className="column first">
+            <p>Amount:</p>
+            <input
+              type="number"
+              name="currency-amount-1"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+            />
           </div>
-          <div className="btn-wrap">
-            <button id="convert-btn" type="submit" onClick={convert}>
-              Convert
-            </button>
+          <div className="column second select-container">
+            <p>From:</p>
+            <select
+              value={primaryCurrency}
+              name="currency-option-1"
+              className="currency-options"
+              onChange={(e) => setPrimaryCurrency(e.target.value)}
+            >
+              {/* {currencies.map((currency, index) => (
+                <option key={index}>{currency}</option>
+              ))} */}
+              {Currencies.map((currency, index) => (
+                <option key={index}>{currency.value}</option>
+              ))}
+            </select>
           </div>
-        </form>
-      </div>
-      {
-        showExchangeRate && (
-          <ExchangeRate
-            exchangeRate={exchangeRate}
-            primaryCurrency={primaryCurrency}
-            secondaryCurrency={secondaryCurrency}
-            result={result}
-            amount={amount}
-          />
-        )
-      }
+          <div className="column third select-container">
+            <p>To:</p>
+            <select
+              value={secondaryCurrency}
+              name="currency-option-2"
+              className="currency-options"
+              onChange={(e) => setSecondaryCurrency(e.target.value)}
+            >
+              {/* {currencies2.map((currency, index) => (
+                <option key={index}>{currency}</option>
+              ))} */}
+              {physicalCurrencies.map((currency, index) => (
+                <option key={index}>{currency.value}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className="btn-wrap">
+          <button id="convert-btn" type="submit" onClick={convert}>
+            Convert
+          </button>
+        </div>
+      </form>
     </div>
+    <div className="exchange-rate-display">
+    {
+      showExchangeRate && (
+        <ExchangeRate
+          exchangeRate={exchangeRate}
+          primaryCurrency={primaryCurrency}
+          secondaryCurrency={secondaryCurrency}
+          result={result}
+          amount={amount}
+        />
+      )
+    }
+    </div>
+    </>
   );
 };
 
