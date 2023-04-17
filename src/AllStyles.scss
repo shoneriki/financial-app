@@ -243,6 +243,10 @@ $currency-converter-display-bg: #41B3A3;
     height: var(--portrait-vh);
   }
 
+  form {
+    width: 80%;
+  }
+
   .left {
     width: 100%;
 
@@ -268,7 +272,6 @@ $currency-converter-display-bg: #41B3A3;
   }
 
   .currency-converter {
-    flex: 1;
     border-radius: 16px 16px 0 0;
     background-color: var(--currency-converter-bg);
     color: white;
@@ -286,7 +289,7 @@ $currency-converter-display-bg: #41B3A3;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
+      width: 80%;
 
       input {
         width: 90%;
@@ -297,7 +300,7 @@ $currency-converter-display-bg: #41B3A3;
 
     .btn-wrap {
       display: flex;
-      width: 80vw;
+      width: 80%;
     }
   }
 
