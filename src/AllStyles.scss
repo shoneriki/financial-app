@@ -227,7 +227,7 @@ $currency-converter-display-bg: #41B3A3;
 
 
 /*1 start----------------------------------------------------------------------*/
-  @media screen and (orientation: portrait) {
+@media screen and (orientation: portrait) {
   body {
     display: flex;
     flex-direction: column;
@@ -305,21 +305,26 @@ $currency-converter-display-bg: #41B3A3;
   }
 
   .right {
+    @include flex-center;
     border-radius: 0 0 16px 16px;
     background-color: var(--exchange-rate-bg);
     width: 100%;
     padding: 0;
 
+
     .exchange-rate-display {
       flex: none;
     }
     .lineChart-wrap {
+      @include flex-center;
+      flex-direction: column;
       width: 90%;
     }
 
-    .lineChart-wrap .column-wrap {
+    .column-wrap {
+      @include flex-center;
       text-align: center;
-      width: 100%;
+      width: 80%;
 
       h2 {
         margin: 8px 0;
@@ -329,10 +334,10 @@ $currency-converter-display-bg: #41B3A3;
     .first-row {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
       text-align: center;
       margin: 0;
-      width: 100%;
+      width: 80%;
 
       .column p {
         margin-bottom: 8px;
@@ -342,7 +347,7 @@ $currency-converter-display-bg: #41B3A3;
     .row.second-row {
       display: flex;
       justify-content: center;
-      width: 100%;
+      width: 80%;
 
       button {
         width: 100%;
