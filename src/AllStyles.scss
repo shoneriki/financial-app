@@ -125,19 +125,24 @@ $currency-converter-display-bg: #41B3A3;
 
   /* exchange-rate styles*/
 
-  .exchange-rate-display {
-    flex: 1;
-    color: white;
-    border-radius: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: space-between;
-    justify-content: center;
-    text-align: center;
-    padding: 8px 0;
-    width: 100%;
-    background-color: var(--currency-converter-display-bg);
+  // .exchange-rate-display .display {
+  //   flex: 1;
+  //   color: white;
+  //   border-radius: 0;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: space-between;
+  //   justify-content: center;
+  //   text-align: center;
+  //   padding: 8px 0;
+  //   width: 100%;
+  //   background-color: var(--currency-converter-display-bg);
+  // }
+
+  .exchange-rate-display .hide-on-potrait {
+    display: none;
   }
+
 
   /* right side styles*/
 
@@ -247,6 +252,23 @@ $currency-converter-display-bg: #41B3A3;
     width: 80%;
   }
 
+  .exchange-rate-display {
+    flex: 1;
+    color: white;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    background-color: var(--currency-converter-display-bg);
+  }
+
+    .exchange-rate-display.hide-on-portrait {
+      display: none;
+    }
+
   .left {
     width: 100%;
 
@@ -312,9 +334,6 @@ $currency-converter-display-bg: #41B3A3;
     padding: 0;
 
 
-    .exchange-rate-display {
-      flex: none;
-    }
     .lineChart-wrap {
       @include flex-center;
       flex-direction: column;
