@@ -4,9 +4,13 @@
   --currency-converter-bg: #C38D9E;
   --exchange-rate-bg: #E27D60;
   --currency-converter-display-bg: #41B3A3;
-  --container-height: 30%;
-  --container-width: 60%;
-  --left-height: 66vh;
+  --container-height: 100%;
+  --container-width: 100%;
+  --portrait-vh : 100vh;
+  --portrait-vw : 90vw;
+  --landscape-vh : 30vh;
+  --landscape-vw : 60vw;
+  // --left-height: 66vh;
   --font-family: 'Roboto', sans-serif;
 
   --nondesktop-height: 20vh;
@@ -90,7 +94,7 @@ $currency-converter-display-bg: #41B3A3;
     text-align: center;
     margin: 0;
     padding: 0;
-    width: 25%;
+    width: 20%;
     input {
       width: 100%;
       border: none;
@@ -142,7 +146,8 @@ $currency-converter-display-bg: #41B3A3;
     border-radius: 0 0 16px 16px;
     color: white;
     background-color: var(--exchange-rate-bg);
-    padding: 16px;
+    // padding: 16px;
+    width: 100%;
 
     .lineChart-wrap .column-wrap {
       @include flex-center;
@@ -196,13 +201,11 @@ $currency-converter-display-bg: #41B3A3;
   }
 
 /* 0 start */
-@media (min-width: 260px) and (max-width: 768px) {
+@media (min-width: 260px) {
 
   body {
     margin: 0;
     font-family: var(--font-family);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 
     width: 100%;
     height: 100vh;
@@ -214,9 +217,6 @@ $currency-converter-display-bg: #41B3A3;
     color: white;
     z-index: 0;
     }
-  h2 {
-    font-size: 12px;
-  }
   h3{
     font-size:  12px;
   }
@@ -228,24 +228,44 @@ $currency-converter-display-bg: #41B3A3;
 
 /*1 start----------------------------------------------------------------------*/
   @media screen and (orientation: portrait) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: var(--portrait-vw);
+    height: var(--portrait-vh);
+  }
 
-  /* Original left side; now top two containers for currency and the exchange results */
+  .left {
+    width: 100%;
 
-    .flex {
-      display: flex;
+    .column.first {
+      @include flex-center;
       flex-direction: column;
-      width: 100%;
-      height: 100%;
-    }
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      width: 10%;
 
-    .left {
-      width: 100%;
+      input {
+        width: 100%;
+        border: none;
+        border-radius: 4px;
+        text-align: center;
+      }
     }
+  }
 
   .forDesktop {
     display: none;
   }
-
 
   .currency-converter {
     flex: 1;
@@ -253,49 +273,53 @@ $currency-converter-display-bg: #41B3A3;
     background-color: var(--currency-converter-bg);
     color: white;
     text-align: center;
-    font-size: 16px;
-    // padding: 0 16px;
-    h2{
+
+    h2 {
       margin: 8px 0;
-      font-size: 20px;
-    }
-    p {
-      margin: 0;
-      font-size: 16px;
     }
 
-    .column-wrap{
-      display:flex;
+    p {
+      margin-bottom: 8px;
+    }
+
+    .column-wrap {
+      display: flex;
       align-items: center;
       justify-content: space-between;
-        input{
-          width: 90%;
-          border:none;
-          border-radius: 4px;
-        }
+      width: 100%;
+
+      input {
+        width: 90%;
+        border: none;
+        border-radius: 4px;
+      }
     }
 
     .btn-wrap {
       display: flex;
-      width: 100%;
+      width: 80vw;
     }
-
   }
 
-
-  /* Original left side stylings end; now top two containers for currency and the exchange result*/
-
-  /* Original right side; now bottom chart container*/
   .right {
     border-radius: 0 0 16px 16px;
     background-color: var(--exchange-rate-bg);
-    padding: 16px;
+    width: 100%;
+    padding: 0;
+
+    .exchange-rate-display {
+      flex: none;
+    }
+    .lineChart-wrap {
+      width: 90%;
+    }
 
     .lineChart-wrap .column-wrap {
       text-align: center;
-      h3{
-        margin: 4px 0;
-        font-size: 16px;
+      width: 100%;
+
+      h2 {
+        margin: 8px 0;
       }
     }
 
@@ -305,18 +329,19 @@ $currency-converter-display-bg: #41B3A3;
       justify-content: space-around;
       text-align: center;
       margin: 0;
+      width: 100%;
 
       .column p {
-        margin: 0;
-        font-size: 16px;
+        margin-bottom: 8px;
       }
     }
 
     .row.second-row {
-      display:flex;
+      display: flex;
       justify-content: center;
+      width: 100%;
 
-      button{
+      button {
         width: 100%;
         background-color: #bada55;
         padding: 8px 4px;
@@ -329,11 +354,12 @@ $currency-converter-display-bg: #41B3A3;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
       }
     }
+
     .lineChart {
       display: flex;
       align-items: stretch;
-      height: 160px;
-      width: 294px;
+      height: 100%;
+      width: 100%;
     }
 
     canvas {
@@ -390,7 +416,7 @@ $currency-converter-display-bg: #41B3A3;
       font-size: 16px;
       h2 {
         margin: 8px 0;
-        font-size: 16px;
+        // font-size: 16px;
       }
 
       .column-wrap {
@@ -416,10 +442,9 @@ $currency-converter-display-bg: #41B3A3;
       align-items: space-between;
       justify-content: center;
       text-align: center;
-      width: 100%;
       background-color: var(--currency-converter-display-bg);
-      h3{
-        font-size: 20px;
+      h2{
+        // font-size: 20px;
         margin: 0;
         padding: 0;
       }
@@ -437,7 +462,7 @@ $currency-converter-display-bg: #41B3A3;
     width: 50%;
     border-radius: 0 16px 16px 0;
     background-color: v$exchange-rate-bg;
-    padding: 8px;
+    padding: 0 8px;
 
 
     .lineChart-wrap .column-wrap {
@@ -453,7 +478,7 @@ $currency-converter-display-bg: #41B3A3;
       flex-direction: row;
       justify-content: space-around;
       text-align: center;
-      width: 60%;
+      width: 100%;
       margin: 0;
 
       .column p {
@@ -495,7 +520,7 @@ $currency-converter-display-bg: #41B3A3;
     }
 
     canvas {
-      width: 20vw;
+      width: 100%;
     }
   }
 }

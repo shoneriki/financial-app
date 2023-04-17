@@ -190,7 +190,7 @@ const LineChart = ({ loading, setLoading }) => {
     <div className="lineChart-wrap">
       {loading && <Loading />}
       <div className="column-wrap">
-        <h3> Monthly Exchange Data</h3>
+        <h2> Monthly Exchange Data</h2>
         <div className="row first-row">
           <div className="column second select-container">
             <p>From:</p>
@@ -227,8 +227,11 @@ const LineChart = ({ loading, setLoading }) => {
       </div>
       <div className="dataColumn wrap">
         <div className="lineChart">
-          <Line data={currencyData} height={400} options={chartOptions} />
-          {/* <Line data={chartData} height={400} options={chartOptions} /> */}
+          <Line
+            data={currencyData}
+            style={{ height: "200px" }}
+            options={chartOptions}
+          />
         </div>
       </div>
     </div>
