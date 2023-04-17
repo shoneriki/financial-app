@@ -13,23 +13,37 @@
   --tablet-height: 50vh;
 }
 
+$font-family: 'Roboto', sans-serif;
+$body-bg: #84CDCA;
+$currency-converter-bg: #C38D9E;
+$exchange-rate-bg: #E27D60;
+$currency-converter-display-bg: #41B3A3;
+
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 /*loading */
 .loading-container {
+  @include flex-center;
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
   min-height: 100vh;
-  align-items: center;
   background: rgba(0, 0, 0, 0.834) url("https://media.giphy.com/media/8agqybiK5LW8qrG3vJ/giphy.gif") center no-repeat;
   background-color: #F8F5FA;
   z-index: 10000;
 }
 
 .spinner {
+  @include flex-center;
   width: 100px;
   height: 100px;
   border: 8px solid;
@@ -52,23 +66,43 @@
 /* end of loading styles*/
 
 /* general styles*/
-  .column.first {
-    display: flex;
+  .currency-converter {
+    @include flex-center;
     flex-direction: column;
-    align-items: center;
-    text-align: left;
+  }
+
+  form {
+    @include flex-center;
+    width: 72%;
+    flex-direction: column;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+
+  .column p {
+    margin-bottom: 8px;
+  }
+  .column.first {
+    @include flex-center;
+    flex-direction: column;
+    text-align: center;
     margin: 0;
     padding: 0;
     width: 25%;
     input {
-      width: 90%;
+      width: 100%;
       border: none;
       border-radius: 4px;
+      text-align: center;
     }
   }
 
+
+
   .btn-wrap {
-    display: flex;
+    @include flex-center;
     width: 100%;
 
     button {
@@ -104,13 +138,15 @@
   /* right side styles*/
 
   .right {
+    @include flex-center;
     border-radius: 0 0 16px 16px;
     color: white;
     background-color: var(--exchange-rate-bg);
     padding: 16px;
 
     .lineChart-wrap .column-wrap {
-      text-align: center;
+      @include flex-center;
+      flex-direction: column;
 
       h3 {
         margin: 4px 0;
@@ -123,6 +159,7 @@
       display: flex;
       justify-content: space-around;
       text-align: center;
+      width: 60%;
       margin: 0;
 
       .column p {
@@ -134,6 +171,7 @@
     .row.second-row {
       display: flex;
       justify-content: center;
+      width: 80%;
 
       button {
         width: 100%;
@@ -216,9 +254,9 @@
     color: white;
     text-align: center;
     font-size: 16px;
-    padding: 0 16px;
+    // padding: 0 16px;
     h2{
-      padding: 16px 0;
+      margin: 8px 0;
       font-size: 20px;
     }
     p {
@@ -351,7 +389,7 @@
       text-align: center;
       font-size: 16px;
       h2 {
-        padding: 0 16px;
+        margin: 8px 0;
         font-size: 16px;
       }
 
@@ -398,7 +436,7 @@
   .right {
     width: 50%;
     border-radius: 0 16px 16px 0;
-    background-color: var(--exchange-rate-bg);
+    background-color: v$exchange-rate-bg;
     padding: 8px;
 
 
@@ -415,7 +453,8 @@
       flex-direction: row;
       justify-content: space-around;
       text-align: center;
-      margin: 4px;
+      width: 60%;
+      margin: 0;
 
       .column p {
         margin: 0;
