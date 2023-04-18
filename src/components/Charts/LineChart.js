@@ -5,7 +5,9 @@ import { ExchangeRate } from "../ExchangeRate";
 import Loading from "../Loading";
 import Data from "../../utils/Data";
 import { Line } from "react-chartjs-2";
-import dayjs from "dayjs"
+import dayjs from "dayjs";
+
+import {Button} from "@mui/material"
 
   import {
     Chart as ChartJS,
@@ -222,7 +224,13 @@ const LineChart = ({ loading, setLoading }) => {
           </div>
         </div>
         <div className="row second-row">
-          <button onClick={chartDataReq}>Monthly Exchange</button>
+          <Button
+            onClick={chartDataReq}
+            variant="contained"
+            color="primary"
+            type="submit">
+            Monthly Exchange
+          </Button>
         </div>
       </div>
       <div className="dataColumn wrap">

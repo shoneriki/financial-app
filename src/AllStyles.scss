@@ -125,19 +125,19 @@ $currency-converter-display-bg: #41B3A3;
 
   /* exchange-rate styles*/
 
-  // .exchange-rate-display .display {
-  //   flex: 1;
-  //   color: white;
-  //   border-radius: 0;
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: space-between;
-  //   justify-content: center;
-  //   text-align: center;
-  //   padding: 8px 0;
-  //   width: 100%;
-  //   background-color: var(--currency-converter-display-bg);
-  // }
+  .exchange-rate-display .display {
+    flex: 1;
+    color: white;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 0;
+    width: 100%;
+    background-color: var(--currency-converter-display-bg);
+  }
 
   .exchange-rate-display .hide-on-potrait {
     display: none;
@@ -183,18 +183,18 @@ $currency-converter-display-bg: #41B3A3;
       justify-content: center;
       width: 80%;
 
-      button {
-        width: 100%;
-        background-color: #bada55;
-        padding: 8px 4px;
-        font-weight: 700;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        margin: 16px 0;
-        display: block;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
+      // button {
+      //   width: 100%;
+      //   background-color: #bada55;
+      //   padding: 8px 4px;
+      //   font-weight: 700;
+      //   color: white;
+      //   border: none;
+      //   border-radius: 8px;
+      //   margin: 16px 0;
+      //   display: block;
+      //   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+      // }
     }
 
     .lineChart {
@@ -368,18 +368,18 @@ $currency-converter-display-bg: #41B3A3;
       justify-content: center;
       width: 80%;
 
-      button {
-        width: 100%;
-        background-color: #bada55;
-        padding: 8px 4px;
-        font-weight: 700;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        margin: 16px 0;
-        display: block;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
+      // button {
+      //   width: 100%;
+      //   background-color: #bada55;
+      //   padding: 8px 4px;
+      //   font-weight: 700;
+      //   color: white;
+      //   border: none;
+      //   border-radius: 8px;
+      //   margin: 16px 0;
+      //   display: block;
+      //   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+      // }
     }
 
     .lineChart {
@@ -459,7 +459,7 @@ $currency-converter-display-bg: #41B3A3;
     }
 
 
-    .exchange-rate-display {
+    .exchange-rate-display .display {
       flex: 1;
       border-radius: 0 0 0 16px;
       margin: 0;
@@ -471,7 +471,6 @@ $currency-converter-display-bg: #41B3A3;
       text-align: center;
       background-color: var(--currency-converter-display-bg);
       h2{
-        // font-size: 20px;
         margin: 0;
         padding: 0;
       }
@@ -519,18 +518,18 @@ $currency-converter-display-bg: #41B3A3;
       display: flex;
       justify-content: center;
 
-      button {
-        width: 68%;
-        background-color: #bada55;
-        padding: 8px 4px;
-        font-weight: 700;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        margin: 16px 0;
-        display: block;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
+      // button {
+      //   width: 68%;
+      //   background-color: #bada55;
+      //   padding: 8px 4px;
+      //   font-weight: 700;
+      //   color: white;
+      //   border: none;
+      //   border-radius: 8px;
+      //   margin: 16px 0;
+      //   display: block;
+      //   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+      // }
     }
 
     .lineChart-wrap {

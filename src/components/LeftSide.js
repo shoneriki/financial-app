@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
+import {Button, Container, Box, Input,  InputLabel, Select, MenuItem, Typography} from '@mui/material'
+
+import { useTheme } from "@mui/material/styles";
 
 import ExchangeRate from "./ExchangeRate";
 
@@ -46,6 +49,8 @@ export const physicalCurrencies = Currencies.filter(
 );
 
 const LeftSide = ({ loading, setLoading }) => {
+
+  const theme = useTheme();
   // change names later?
   const [primaryCurrency, setPrimaryCurrency] = useState("USD");
   const [secondaryCurrency, setSecondaryCurrency] = useState("JPY");
@@ -75,6 +80,7 @@ const LeftSide = ({ loading, setLoading }) => {
           response.data[["Realtime Currency Exchange Rate"]] &&
           response.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
         ) {
+          setLoading(true);
           setExchangeRate(
             response.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
           );
@@ -101,7 +107,7 @@ const LeftSide = ({ loading, setLoading }) => {
 useEffect(() => {
   if (primaryCurrency !== secondaryCurrency) {
     setShowExchangeRate(true);
-    convert()
+/*     convert() */
   } else {
     setShowExchangeRate(false);
   }
@@ -116,8 +122,10 @@ useEffect(() => {
   };
 
   return (
-    <>
-      <div className="currency-converter">
+    <Box
+      color={theme.palette.text.primary}
+    >
+      <Box style={{backgroundColor: theme.palette.secondary.main}} className="currency-converter">
         <h2>Currency Converter</h2>
         <p className="forDesktop">
           Please enter an amount, select currencies and press enter
@@ -126,7 +134,7 @@ useEffect(() => {
           <div className="column-wrap">
             <div className="column first">
               <p>Amount:</p>
-              <input
+              <Input
                 type="number"
                 name="currency-amount-1"
                 value={amount}
@@ -134,7 +142,7 @@ useEffect(() => {
               />
             </div>
             <div className="column second select-container">
-              <p>From:</p>
+              <InputLabel>From:</InputLabel>
               <select
                 value={primaryCurrency}
                 name="currency-option-1"
@@ -166,14 +174,38 @@ useEffect(() => {
               </select>
             </div>
           </div>
-          <div className="btn-wrap">
-            <button id="convert-btn" type="submit" onClick={convert}>
+          <Container
+            // className="btn-wrap"
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "1rem 0",
+            }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              id="convert-btn"
+              type="submit"
+              onClick={convert}
+              sx={{
+                width: "100%",
+                backgroundColor: "#bada55",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "#82A31A",
+                  color: "white",
+                },
+              }}
+            >
               Convert
-            </button>
-          </div>
+            </Button>
+          </Container>
         </form>
-      </div>
-      <div
+      </Box>
+      <Box
         className={`exchange-rate-display ${
           showExchangeRate ? "display" : "hide-on-portrait"
         }`}
@@ -188,8 +220,8 @@ useEffect(() => {
             showExchangeRate={showExchangeRate}
           />
         )}
-      </div>
-    </>
+      </Box>
+    </Box>
   );
 };
 

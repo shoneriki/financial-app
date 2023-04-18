@@ -1,7 +1,7 @@
 
 import {useState} from "react"
 import { News, LeftSide, ExchangeRate, Loading, LineChart } from "./components";
-import styled from "styled-components"
+import styled from "styled-components";
 
 
 function App() {
