@@ -17,6 +17,9 @@
   --tablet-height: 50vh;
 }
 
+* {
+  box-sizing: border-box;
+}
 
 body {
   max-width: 100%;
