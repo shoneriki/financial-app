@@ -3,7 +3,7 @@ import {useState} from "react"
 import { News, LeftSide, ExchangeRate, Loading, LineChart } from "./components";
 import styled from "styled-components";
 import { useTheme } from "@mui/material/styles";
-import {Box} from "@mui/material"
+import {Box, Grid} from "@mui/material"
 
 
 function App() {
@@ -12,43 +12,35 @@ function App() {
   return (
     <Box
       // className="flex"
-      style={{color: theme.palette.text.primary}}
+      style={{ color: theme.palette.text.primary }}
       sx={{
-        display: 'flex',
-        flexDirection: {xs: 'column', sm: 'row'},
-        borderRadius: '16px',
-        width: '100%',
-        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.4)',
+        display: "flex",
+        flexDirection: { xs: "column", sm: "row" },
+        borderRadius: "16px",
+        width: "100%",
+        boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.4)",
       }}
     >
       {loading && <Loading />}
-      <Box
-        // className="left"
-        sx={{
-          display: "flex",
-          flexDirection: {xs: 'column', sm: 'row'},
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100%",
-          width: { xs: '100%', sm: '50%'},
-        }}
-      >
-        <LeftSide loading={loading} setLoading={setLoading} />
-      </Box>
-      <Box
-        // className="right"
-        style={{ backgroundColor: theme.palette.alternate.main }}
-        sx={{
-          height: "100%",
-          width: {xs: '100%', sm: '50%'},
-          borderRadius: {xs: "0 0 16px 16px", sm: "0 16px 16px 0"},
-          padding: "0",
-          margin: "0",
-
-        }}
-      >
-        <LineChart loading={loading} setLoading={setLoading} />
-      </Box>
+      <Grid container sx={{ flexGrow: 1 }}>
+        <Grid item xs={12} sm={6} sx={{ display: "flex", height: {xs: "66%", sm: "100%"} }}>
+          <LeftSide loading={loading} setLoading={setLoading} />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          sx={{
+            display: "flex",
+            height: '100%',
+            backgroundColor: theme.palette.alternate.main,
+            borderRadius: { xs: "0 0 16px 16px", sm: "0 16px 16px 0" },
+            height: {xs: "33%", sm: "100%"},
+          }}
+        >
+          <LineChart loading={loading} setLoading={setLoading} />
+        </Grid>
+      </Grid>
     </Box>
   );
 }

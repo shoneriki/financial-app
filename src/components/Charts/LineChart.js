@@ -7,7 +7,17 @@ import Data from "../../utils/Data";
 import { Line } from "react-chartjs-2";
 import dayjs from "dayjs";
 
-import {Button, Box, Container, Typography} from "@mui/material"
+import {
+  Button,
+  Box,
+  Container,
+  Typography,
+  FormControl,
+  TextField,
+  Grid,
+  MenuItem,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
   import {
     Chart as ChartJS,
@@ -192,9 +202,10 @@ const LineChart = ({ loading, setLoading }) => {
     <Box
       // className="lineChart-wrap"
       sx={{
-        borderRadius: {xs: "0 0 16px 16px", sm: "0 16px 16px 0"},
+        borderRadius: { xs: "0 0 16px 16px", sm: "0 16px 16px 0" },
         display: "flex",
         flexDirection: "column",
+        flexGrow: 1,
       }}
     >
       {loading && <Loading />}
@@ -208,12 +219,12 @@ const LineChart = ({ loading, setLoading }) => {
         }}
       >
         <Typography
-          variant="h4"
+          variant="h6"
           sx={{
             textAlign: "center",
             margin: "16px 0",
-            fontSize: '1.5rem',
-            fontWeight: 'bold',
+            fontSize: "1.5rem",
+            fontWeight: "bold",
           }}
         >
           Monthly Exchange Data
@@ -224,45 +235,64 @@ const LineChart = ({ loading, setLoading }) => {
             justifyContent: "space-around",
           }}
         >
-          <Box
+          <TextField
+            id="currency-option-1"
+            select
+            label="From"
+            value={firstCurrency}
+            onChange={handleFirstCurrencyChange}
             sx={{
-              display: "flex",
-              flexDirection: "column",
+              textAlign: "center",
+              "& .MuiInputBase-input": {
+                fontSize: "0.5rem",
+                padding: "0",
+              },
+              "& .MuiInputLabel-root": {
+                fontSize: "0.8rem",
+              },
             }}
           >
-            <p>From:</p>
-            <select
-              value={firstCurrency}
-              name="currency-option-1"
-              className="currency-options"
-              // onChange={(e) => setFirstCurrency(e.target.value)}
-              onChange={handleFirstCurrencyChange}
-
-            >
-              {physicalCurrencies.map((currency, index) => (
-                <option key={index}>{currency.value}</option>
-              ))}
-            </select>
-          </Box>
-          <Box
+            {physicalCurrencies.map((currency, index) => (
+              <MenuItem
+                key={index}
+                value={currency.value}
+                sx={{
+                  fontSize: "0.5rem",
+                }}
+              >
+                {currency.value}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            id="currency-option-1"
+            select
+            label="From"
+            value={secondCurrency}
+            onChange={handleSecondCurrencyChange}
             sx={{
-              display: "flex",
-              flexDirection: "column",
+              textAlign: "center",
+              "& .MuiInputBase-input": {
+                fontSize: "0.5rem",
+                padding: "0",
+              },
+              "& .MuiInputLabel-root": {
+                fontSize: "0.8rem",
+              },
             }}
           >
-            <p>To:</p>
-            <select
-              value={secondCurrency}
-              name="currency-option-2"
-              className="currency-options"
-              // onChange={(e) => setSecondCurrency(e.target.value)}
-              onChange={handleSecondCurrencyChange}
-            >
-              {physicalCurrencies.map((currency, index) => (
-                <option key={index}>{currency.value}</option>
-              ))}
-            </select>
-          </Box>
+            {physicalCurrencies.map((currency, index) => (
+              <MenuItem
+                key={index}
+                value={currency.value}
+                sx={{
+                  fontSize: "0.5rem",
+                }}
+              >
+                {currency.value}
+              </MenuItem>
+            ))}
+          </TextField>
         </Box>
         <Box className="row second-row">
           <Button
@@ -275,18 +305,19 @@ const LineChart = ({ loading, setLoading }) => {
           </Button>
         </Box>
       </Box>
-      <div className="dataColumn wrap">
-        <Box
-          sx={{
-            width: "100%",
-            // height: { xs: "200px", sm: "300px", md: "400px", lg: "200px" },
-            height: '100%',
-            overflow: "hidden",
-          }}
-        >
-          <Line data={currencyData} options={chartOptions} />
-        </Box>
-      </div>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          overflow: "hidden",
+        }}
+      >
+        <Line
+          data={currencyData}
+          options={chartOptions}
+
+        />
+      </Box>
     </Box>
   );
 };

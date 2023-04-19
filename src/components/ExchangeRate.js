@@ -23,8 +23,9 @@ const ExchangeRate = ({
         borderRadius: {xs: "0", sm: "0"},
       }}
     >
-      {
-       result !== 0 && (
+       {
+       result !== 0 &&
+       (
           <Box
           // className="exchange-rate"
             style={{ backgroundColor: theme.palette.tertiary.main }}
@@ -35,11 +36,10 @@ const ExchangeRate = ({
               alignItems: "center",
               height: "100%",
               borderRadius: {xs: "0", sm: "0 0 0 16px"},
-              margin: "0",
             }}
           >
             <Typography
-              variant= "h4"
+              variant= "h6"
               sx={{
                 textAlign: "center",
               }}

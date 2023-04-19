@@ -127,37 +127,37 @@ useEffect(() => {
       sx={{
         display: "flex",
         flexDirection: "column",
+        width: "100%",
         height: "100%",
-        width: '100%',
+        padding: "0",
+        margin: "0",
       }}
     >
       <Box
         style={{ backgroundColor: theme.palette.secondary.main }}
         sx={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           flexDirection: "column",
-          textAlign: "center",
-          margin: "0",
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: "100%",
+          height: "50%",
           padding: "0",
-          width: {xs: '100%', sm: '100%'},
-          borderRadius: {xs: '16px 16px 0 0', sm: '16px 0 0 0'},
-          flexGrow: 1,
+          margin: "0",
+          borderRadius: {xs: "16px 16px 0 0", sm: "16px 0 0 0 "},
+          textAlign: 'center',
+
         }}
       >
         <Typography
-          variant="h4"
+          variant="h6"
           sx={{
             fontWeight: "bold",
-            margin: "16px 0",
+            margin: "0",
           }}
         >
           Currency Converter
         </Typography>
-        <p className="forDesktop">
-          Please enter an amount, select currencies and press enter
-        </p>
         <form
           onSubmit={formHandler}
           sx={{
@@ -168,8 +168,8 @@ useEffect(() => {
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between",
-              width: "90%",
+              justifyContent: "space-around",
+              width: "100%",
               height: "100%",
             }}
           >
@@ -192,12 +192,12 @@ useEffect(() => {
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                style={{ color: theme.palette.text.primary}}
+                style={{ color: theme.palette.text.primary }}
                 sx={{
-                  fontSize: "12px",
+                  fontSize: ".6rem",
                   textAlign: "center",
                   "& .MuiInputBase-input": {
-                    fontSize: ".6rem",
+                    fontSize: ".8rem",
                     padding: "4px",
                   },
                   "& .MuiInputLabel-root": {
@@ -287,7 +287,8 @@ useEffect(() => {
               sx={{
                 width: "100%",
                 backgroundColor: "#bada55",
-                margin: "16px 0",
+                padding: "0",
+                fontSize: "0.6rem",
                 "&:hover": {
                   backgroundColor: "#82A31A",
                 },
@@ -303,9 +304,9 @@ useEffect(() => {
         //   showExchangeRate ? "display" : "hide-on-portrait"
         // }`}
         sx={{
-          height: "100%",
+          height: "50%%",
           flexGrow: 1,
-          borderRadius: {xs: '0', sm: '0'},
+          borderRadius: { xs: "0", sm: "0" },
         }}
       >
         {showExchangeRate && (
