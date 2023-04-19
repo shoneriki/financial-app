@@ -17,7 +17,10 @@ function App() {
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         borderRadius: "16px",
-        width: "100%",
+        height: "100%",
+        width: '100%',
+        // width: {xs: "90vw", sm: "80vw"},
+        // height: {xs: "50vh", sm: "60vh"},
         boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.4)",
       }}
     >
@@ -35,7 +38,9 @@ function App() {
             height: '100%',
             backgroundColor: theme.palette.alternate.main,
             borderRadius: { xs: "0 0 16px 16px", sm: "0 16px 16px 0" },
-            height: {xs: "33%", sm: "100%"},
+            width: {sx: "100%", sm: "calc(100% - 150px)"},
+            overflow: "hidden",
+            position: "relative",
           }}
         >
           <LineChart loading={loading} setLoading={setLoading} />

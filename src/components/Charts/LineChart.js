@@ -186,7 +186,7 @@ const LineChart = ({ loading, setLoading }) => {
   };
 
   var chartOptions = {
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     scales: {},
     legend: {
       labels: {
@@ -202,6 +202,7 @@ const LineChart = ({ loading, setLoading }) => {
         borderRadius: { xs: "0 0 16px 16px", sm: "0 16px 16px 0" },
         display: "flex",
         flexDirection: "column",
+        overflow: "hidden",
         flexGrow: 1,
       }}
     >
@@ -219,8 +220,7 @@ const LineChart = ({ loading, setLoading }) => {
           variant="h6"
           sx={{
             textAlign: "center",
-            margin: "16px 0",
-            fontSize: "1.5rem",
+            margin: "8px 0",
             fontWeight: "bold",
           }}
         >
@@ -297,6 +297,11 @@ const LineChart = ({ loading, setLoading }) => {
             variant="contained"
             color="primary"
             type="submit"
+            sx={{
+              fontSize: ".6rem",
+              padding: "0 16px",
+              borderRadius: "16px",
+            }}
           >
             Monthly Exchange
           </Button>
@@ -305,15 +310,15 @@ const LineChart = ({ loading, setLoading }) => {
       <Box
         sx={{
           width: "100%",
-          height: "100%",
+          height: "calc(100% - 150px)",
           overflow: "hidden",
+          position: "relative",
+          flexGrow: 1,
         }}
       >
-        <Line
-          data={currencyData}
-          options={chartOptions}
-
-        />
+      <Box style={{ width: "100%", height: "100%" }}>
+        <Line data={currencyData} options={chartOptions} />
+      </Box>
       </Box>
     </Box>
   );

@@ -289,6 +289,7 @@ useEffect(() => {
                 backgroundColor: "#bada55",
                 padding: "0",
                 fontSize: "0.6rem",
+                borderRadius: "16px",
                 "&:hover": {
                   backgroundColor: "#82A31A",
                 },
