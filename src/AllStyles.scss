@@ -153,6 +153,8 @@ $currency-converter-display-bg: #41B3A3;
     background-color: var(--exchange-rate-bg);
     // padding: 16px;
     width: 100%;
+    flex-grow: 1;
+    overflow: hidden;
 
     .lineChart-wrap .column-wrap {
       @include flex-center;
@@ -162,6 +164,19 @@ $currency-converter-display-bg: #41B3A3;
         margin: 4px 0;
         font-size: 16px;
       }
+
+      .lineChart-wrap {
+        h3 {
+          font-size: 16px;
+        }
+
+        /* Add the following styles */
+        min-height: 200px;
+        @media (max-width: 768px) {
+          height: 200px;
+        }
+      }
+
     }
 
 
@@ -201,7 +216,7 @@ $currency-converter-display-bg: #41B3A3;
       display: flex;
       align-items: stretch;
       height: 100%;
-      width: 100%;
+      width: 90%;
     }
   }
 
@@ -332,6 +347,8 @@ $currency-converter-display-bg: #41B3A3;
     background-color: var(--exchange-rate-bg);
     width: 100%;
     padding: 0;
+    flex-grow: 1;
+    overflow: hidden;
 
 
     .lineChart-wrap {
@@ -366,31 +383,16 @@ $currency-converter-display-bg: #41B3A3;
     .row.second-row {
       display: flex;
       justify-content: center;
-      width: 80%;
-
-      // button {
-      //   width: 100%;
-      //   background-color: #bada55;
-      //   padding: 8px 4px;
-      //   font-weight: 700;
-      //   color: white;
-      //   border: none;
-      //   border-radius: 8px;
-      //   margin: 16px 0;
-      //   display: block;
-      //   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-      // }
+      width: 90%;
     }
 
     .lineChart {
       display: flex;
       align-items: stretch;
-      height: 100%;
-      width: 100%;
+      width: 90%;
     }
 
     canvas {
-      height: 100%;
       width: 100%;
     }
   }
@@ -489,6 +491,8 @@ $currency-converter-display-bg: #41B3A3;
     border-radius: 0 16px 16px 0;
     background-color: v$exchange-rate-bg;
     padding: 0 8px;
+    flex-grow: 1;
+    overflow: hidden;
 
 
     .lineChart-wrap .column-wrap {
@@ -541,11 +545,12 @@ $currency-converter-display-bg: #41B3A3;
     .lineChart {
       display: flex;
       align-items: stretch;
-      width: 300px;
-      height: 160px;
+      width: 90%;
+      height: 90%;
     }
 
     canvas {
+      height: 100%;
       width: 100%;
     }
   }

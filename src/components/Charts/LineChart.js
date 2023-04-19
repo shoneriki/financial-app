@@ -7,7 +7,7 @@ import Data from "../../utils/Data";
 import { Line } from "react-chartjs-2";
 import dayjs from "dayjs";
 
-import {Button} from "@mui/material"
+import {Button, Box, Container, Typography} from "@mui/material"
 
   import {
     Chart as ChartJS,
@@ -179,7 +179,7 @@ const LineChart = ({ loading, setLoading }) => {
   };
 
   var chartOptions = {
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     scales: {},
     legend: {
       labels: {
@@ -189,12 +189,47 @@ const LineChart = ({ loading, setLoading }) => {
   };
 
   return (
-    <div className="lineChart-wrap">
+    <Box
+      // className="lineChart-wrap"
+      sx={{
+        borderRadius: {xs: "0 0 16px 16px", sm: "0 16px 16px 0"},
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       {loading && <Loading />}
-      <div className="column-wrap">
-        <h2> Monthly Exchange Data</h2>
-        <div className="row first-row">
-          <div className="column second select-container">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "center",
+          margin: "0",
+          padding: "0",
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            textAlign: "center",
+            margin: "16px 0",
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+          }}
+        >
+          Monthly Exchange Data
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <p>From:</p>
             <select
               value={firstCurrency}
@@ -202,13 +237,19 @@ const LineChart = ({ loading, setLoading }) => {
               className="currency-options"
               // onChange={(e) => setFirstCurrency(e.target.value)}
               onChange={handleFirstCurrencyChange}
+
             >
               {physicalCurrencies.map((currency, index) => (
                 <option key={index}>{currency.value}</option>
               ))}
             </select>
-          </div>
-          <div className="column third select-container">
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <p>To:</p>
             <select
               value={secondCurrency}
@@ -221,28 +262,32 @@ const LineChart = ({ loading, setLoading }) => {
                 <option key={index}>{currency.value}</option>
               ))}
             </select>
-          </div>
-        </div>
-        <div className="row second-row">
+          </Box>
+        </Box>
+        <Box className="row second-row">
           <Button
             onClick={chartDataReq}
             variant="contained"
             color="primary"
-            type="submit">
+            type="submit"
+          >
             Monthly Exchange
           </Button>
-        </div>
-      </div>
+        </Box>
+      </Box>
       <div className="dataColumn wrap">
-        <div className="lineChart">
-          <Line
-            data={currencyData}
-            style={{ height: "200px" }}
-            options={chartOptions}
-          />
-        </div>
+        <Box
+          sx={{
+            width: "100%",
+            // height: { xs: "200px", sm: "300px", md: "400px", lg: "200px" },
+            height: '100%',
+            overflow: "hidden",
+          }}
+        >
+          <Line data={currencyData} options={chartOptions} />
+        </Box>
       </div>
-    </div>
+    </Box>
   );
 };
 

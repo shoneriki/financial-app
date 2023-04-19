@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
-import {Button, Container, Box, Input, FormControl, InputLabel, Select, MenuItem, Typography} from '@mui/material'
+import {Button, Container, Box, Input, FormControl, InputLabel, Select, MenuItem, TextField, NativeSelect, OutlinedInput, Autocomplete, Typography} from '@mui/material'
 
 import { useTheme } from "@mui/material/styles";
 
@@ -125,9 +125,10 @@ useEffect(() => {
     <Box
       color={theme.palette.text.primary}
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%'
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        width: '100%',
       }}
     >
       <Box
@@ -140,19 +141,27 @@ useEffect(() => {
           textAlign: "center",
           margin: "0",
           padding: "0",
-          width: "100%",
-          borderRadius: "16px 0 0 0",
+          width: {xs: '100%', sm: '100%'},
+          borderRadius: {xs: '16px 16px 0 0', sm: '16px 0 0 0'},
           flexGrow: 1,
         }}
       >
-        <h2>Currency Converter</h2>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "bold",
+            margin: "16px 0",
+          }}
+        >
+          Currency Converter
+        </Typography>
         <p className="forDesktop">
           Please enter an amount, select currencies and press enter
         </p>
         <form
           onSubmit={formHandler}
           sx={{
-            width: '100%',
+            width: "100%",
           }}
         >
           <Box
@@ -161,74 +170,58 @@ useEffect(() => {
               alignItems: "center",
               justifyContent: "space-between",
               width: "90%",
-              height: '50%',
+              height: "100%",
             }}
           >
             <FormControl
               sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'column',
-                textAlign: 'center',
-                margin: '0',
-                padding: '0',
-                width: '33%',
-                flexGrow: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                textAlign: "center",
+                margin: "0",
+                padding: "0",
+                width: "33%",
+                fontSize: "16px",
               }}
             >
-              <InputLabel
-                htmlFor="currency-amount-1"
-                sx={{
-                  fontSize: '.8rem',
-                }}
-              >
-                Amount:
-              </InputLabel>
-              <Input
+              <TextField
                 id="currency-amount-1"
+                label="Amount"
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
+                style={{ color: theme.palette.text.primary}}
                 sx={{
-                  width: '50%',
-                  border: 'none',
-                  borderRadius: '4px',
-                  textAlign: 'center',
+                  fontSize: "12px",
+                  textAlign: "center",
+                  "& .MuiInputBase-input": {
+                    fontSize: ".6rem",
+                    padding: "4px",
+                  },
+                  "& .MuiInputLabel-root": {
+                    fontSize: "0.6rem",
+                  },
                 }}
               />
             </FormControl>
-            <FormControl
-              sx={{
-                width: "33%",
-                flexGrow: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: '0',
-                margin: '0',
-              }}
-            >
-              <InputLabel
-                htmlFor="currency-option-1"
-                sx={{
-                  fontSize: ".8rem",
-                  padding: '0',
-                  margin: '0',
-
-                }}
-              >
-                From:
-              </InputLabel>
-              <Select
+            <FormControl sx={{ width: "33%" }}>
+              <TextField
                 id="currency-option-1"
+                select
+                label="From"
                 value={primaryCurrency}
                 onChange={(e) => setPrimaryCurrency(e.target.value)}
                 sx={{
-                  fontSize: ".6rem",
-                  padding: '0',
-                  margin: '0',
+                  textAlign: "center",
+                  "& .MuiInputBase-input": {
+                    fontSize: "0.5rem",
+                    padding: "0",
+                  },
+                  "& .MuiInputLabel-root": {
+                    fontSize: "0.8rem",
+                  },
                 }}
               >
                 {Currencies.map((currency, index) => (
@@ -236,35 +229,30 @@ useEffect(() => {
                     key={index}
                     value={currency.value}
                     sx={{
-                      fontSize: ".5rem",
+                      fontSize: "0.5rem",
                     }}
                   >
                     {currency.value}
                   </MenuItem>
                 ))}
-              </Select>
+              </TextField>
             </FormControl>
-            <FormControl
-              sx={{
-                width: "33%",
-                flexGrow: 1,
-                fontSize: ".6rem",
-              }}
-            >
-              <InputLabel
-                htmlFor="currency-option-2"
-                sx={{
-                  fontSize: ".8rem",
-                }}
-              >
-                To:
-              </InputLabel>
-              <Select
+            <FormControl sx={{ width: "33%" }}>
+              <TextField
                 id="currency-option-2"
+                select
+                label="To"
                 value={secondaryCurrency}
                 onChange={(e) => setSecondaryCurrency(e.target.value)}
                 sx={{
-                  fontSize: ".6rem",
+                  textAlign: "center",
+                  "& .MuiInputBase-input": {
+                    fontSize: "0.5rem",
+                    padding: "0",
+                  },
+                  "& .MuiInputLabel-root": {
+                    fontSize: "0.8rem",
+                  },
                 }}
               >
                 {physicalCurrencies.map((currency, index) => (
@@ -272,16 +260,15 @@ useEffect(() => {
                     key={index}
                     value={currency.value}
                     sx={{
-                      fontSize: ".5rem"
+                      fontSize: "0.5rem",
                     }}
                   >
                     {currency.value}
                   </MenuItem>
                 ))}
-              </Select>
+              </TextField>
             </FormControl>
           </Box>
-
           <Box
             // className="btn-wrap"
             sx={{
@@ -300,10 +287,9 @@ useEffect(() => {
               sx={{
                 width: "100%",
                 backgroundColor: "#bada55",
-                color: "white",
+                margin: "16px 0",
                 "&:hover": {
                   backgroundColor: "#82A31A",
-                  color: "white",
                 },
               }}
             >
@@ -313,12 +299,13 @@ useEffect(() => {
         </form>
       </Box>
       <Box
-        className={`exchange-rate-display ${
-          showExchangeRate ? "display" : "hide-on-portrait"
-        }`}
+        // className={`exchange-rate-display ${
+        //   showExchangeRate ? "display" : "hide-on-portrait"
+        // }`}
         sx={{
+          height: "100%",
           flexGrow: 1,
-          height: '50%',
+          borderRadius: {xs: '0', sm: '0'},
         }}
       >
         {showExchangeRate && (

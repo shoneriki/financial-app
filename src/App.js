@@ -11,15 +11,44 @@ function App() {
   const [loading, setLoading] = useState(false)
   return (
     <Box
-      className="flex"
+      // className="flex"
+      style={{color: theme.palette.text.primary}}
+      sx={{
+        display: 'flex',
+        flexDirection: {xs: 'column', sm: 'row'},
+        borderRadius: '16px',
+        width: '100%',
+        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.4)',
+      }}
     >
       {loading && <Loading />}
-      <div className="left">
+      <Box
+        // className="left"
+        sx={{
+          display: "flex",
+          flexDirection: {xs: 'column', sm: 'row'},
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          width: { xs: '100%', sm: '50%'},
+        }}
+      >
         <LeftSide loading={loading} setLoading={setLoading} />
-      </div>
-      <div className="right">
+      </Box>
+      <Box
+        // className="right"
+        style={{ backgroundColor: theme.palette.alternate.main }}
+        sx={{
+          height: "100%",
+          width: {xs: '100%', sm: '50%'},
+          borderRadius: {xs: "0 0 16px 16px", sm: "0 16px 16px 0"},
+          padding: "0",
+          margin: "0",
+
+        }}
+      >
         <LineChart loading={loading} setLoading={setLoading} />
-      </div>
+      </Box>
     </Box>
   );
 }
