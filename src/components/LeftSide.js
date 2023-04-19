@@ -196,9 +196,13 @@ useEffect(() => {
                 sx={{
                   fontSize: ".6rem",
                   textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                   "& .MuiInputBase-input": {
                     fontSize: ".8rem",
                     padding: "4px",
+                    textAlign: "center",
                   },
                   "& .MuiInputLabel-root": {
                     fontSize: "0.6rem",
@@ -218,6 +222,7 @@ useEffect(() => {
                   "& .MuiInputBase-input": {
                     fontSize: "0.5rem",
                     padding: "0",
+                    textAlign: "center",
                   },
                   "& .MuiInputLabel-root": {
                     fontSize: "0.8rem",

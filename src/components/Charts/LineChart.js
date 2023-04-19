@@ -243,6 +243,7 @@ const LineChart = ({ loading, setLoading }) => {
               "& .MuiInputBase-input": {
                 fontSize: "0.5rem",
                 padding: "0",
+                textAlign: "center",
               },
               "& .MuiInputLabel-root": {
                 fontSize: "0.8rem",
