@@ -267,7 +267,7 @@ const LineChart = ({ loading, setLoading }) => {
           <TextField
             id="currency-option-1"
             select
-            label="From"
+            label="To"
             value={secondCurrency}
             onChange={handleSecondCurrencyChange}
             sx={{
