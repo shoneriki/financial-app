@@ -138,15 +138,14 @@ useEffect(() => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: 'center',
-          alignItems: 'center',
+          justifyContent: "center",
+          alignItems: "center",
           width: "100%",
           height: "50%",
           padding: "0",
           margin: "0",
-          borderRadius: {xs: "16px 16px 0 0", sm: "16px 0 0 0 "},
-          textAlign: 'center',
-
+          borderRadius: { xs: "16px 16px 0 0", sm: "16px 0 0 0 " },
+          textAlign: "center",
         }}
       >
         <Typography
@@ -157,6 +156,20 @@ useEffect(() => {
           }}
         >
           Currency Converter
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "none",
+              lg: "inline-flex",
+            },
+            fontSize: ".8rem",
+          }}
+        >
+          please enter value and currencies and press enter
         </Typography>
         <form
           onSubmit={formHandler}
@@ -186,99 +199,99 @@ useEffect(() => {
                 fontSize: "16px",
               }}
             >
-              <TextField
-                id="currency-amount-1"
-                label="Amount"
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                style={{ color: theme.palette.text.primary }}
+              <Box
                 sx={{
-                  fontSize: ".6rem",
+                  display:'flex',
+                  flexDirection: "column",
+                  width: "100%",
+                  fontSize: '0.8rem',
+                  textAlign: 'center',
+                }}
+              >
+                <label htmlFor="amount" sx={{ fontSize: "0.3rem" }}>
+                  Amount:
+                </label>
+                <input
+                  id="amount"
+                  type="number"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  style={{ textAlign: "center"}}
+                />
+              </Box>
+            </FormControl>
+            <FormControl sx={{ width: "33%" }}>
+              <Box
+                sx={{
                   textAlign: "center",
                   display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  "& .MuiInputBase-input": {
-                    fontSize: ".8rem",
-                    padding: "4px",
-                    textAlign: "center",
-                  },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "0.6rem",
-                  },
-                }}
-              />
-            </FormControl>
-            <FormControl sx={{ width: "33%" }}>
-              <TextField
-                id="currency-option-1"
-                select
-                label="From"
-                value={primaryCurrency}
-                onChange={(e) => setPrimaryCurrency(e.target.value)}
-                sx={{
-                  textAlign: "center",
-                  "& .MuiInputBase-input": {
-                    fontSize: "0.5rem",
-                    padding: "0",
-                    textAlign: "center",
-                  },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "0.8rem",
-                  },
+                  flexDirection: "column",
+                  fontSize: '.8rem',
                 }}
               >
-                {Currencies.map((currency, index) => (
-                  <MenuItem
-                    key={index}
-                    value={currency.value}
-                    sx={{
-                      fontSize: "0.5rem",
-                    }}
-                  >
-                    {currency.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </FormControl>
-            <FormControl sx={{ width: "33%" }}>
-              <TextField
-                id="currency-option-2"
-                select
-                label="To"
-                value={secondaryCurrency}
-                onChange={(e) => setSecondaryCurrency(e.target.value)}
-                sx={{
-                  textAlign: "center",
-                  "& .MuiInputBase-input": {
+                <label htmlFor="currency-option-1" sx={{ fontSize: "0.8rem" }}>
+                  From:
+                </label>
+                <select
+                  id="currency-option-1"
+                  value={primaryCurrency}
+                  onChange={(e) => setPrimaryCurrency(e.target.value)}
+                  sx={{
                     fontSize: "0.5rem",
                     padding: "0",
-                  },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "0.8rem",
-                  },
+                    paddingLeft: "8px",
+                  }}
+                >
+                  {Currencies.map((currency, index) => (
+                    <option key={index} value={currency.value}>
+                      {currency.value}
+                    </option>
+                  ))}
+                </select>
+              </Box>
+            </FormControl>
+            <FormControl sx={{ width: "33%" }}>
+              <Box
+                sx={{
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  fontSize: ".8rem",
                 }}
               >
-                {physicalCurrencies.map((currency, index) => (
-                  <MenuItem
-                    key={index}
-                    value={currency.value}
-                    sx={{
-                      fontSize: "0.5rem",
-                    }}
-                  >
-                    {currency.value}
-                  </MenuItem>
-                ))}
-              </TextField>
+                <label htmlFor="currency-option-2" sx={{ fontSize: "0.8rem" }}>
+                  To:
+                </label>
+                <select
+                  id="currency-option-2"
+                  value={secondaryCurrency}
+                  onChange={(e) => setSecondaryCurrency(e.target.value)}
+                  sx={{
+                    fontSize: "0.5rem",
+                    padding: "0",
+                    paddingLeft: "8px",
+                  }}
+                >
+                  {physicalCurrencies.map((currency, index) => (
+                    <option key={index} value={currency.value}>
+                      {currency.value}
+                    </option>
+                  ))}
+                </select>
+              </Box>
             </FormControl>
           </Box>
           <Box
             // className="btn-wrap"
             sx={{
               width: "100%",
-              display: "flex",
+              // display: "flex",
+              display: {
+                xs: "flex",
+                sm: "flex",
+                md: "flex",
+                lg: "none",
+              },
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -310,7 +323,7 @@ useEffect(() => {
         //   showExchangeRate ? "display" : "hide-on-portrait"
         // }`}
         sx={{
-          height: "50%%",
+          height: "50%",
           flexGrow: 1,
           borderRadius: { xs: "0", sm: "0" },
         }}
