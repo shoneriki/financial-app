@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Loading from "./Loading";
-import {Button, Container, Box,Grid, Input, FormControl, InputLabel, Select, MenuItem, TextField, NativeSelect, OutlinedInput, Autocomplete, Typography} from '@mui/material'
+import _Loading from "./Loading";
+import {Button,Box,Grid, FormControl, Typography} from '@mui/material'
 
 import { useTheme } from "@mui/material/styles";
 
@@ -48,7 +48,7 @@ export const physicalCurrencies = Currencies.filter(
   (currency) => !currency.digital
 );
 
-const LeftSide = ({ loading, setLoading }) => {
+const LeftSide = ({setLoading }) => {
 
   const theme = useTheme();
   // change names later?

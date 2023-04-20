@@ -18,6 +18,7 @@ function App() {
          height: "100%",
          width: "100%",
          boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.4)",
+         fontFamily: "Roboto",
 
          "@media (min-width: 600px) and (orientation: landscape)": {
            flexDirection: "row",

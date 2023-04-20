@@ -9,8 +9,6 @@ const ExchangeRate = ({
   secondaryCurrency,
   amount,
   result,
-  signHandler,
-  showExchangeRate,
 }) => {
   const theme = useTheme();
   const roundedExchange = Math.round(exchangeRate * 100) / 100;

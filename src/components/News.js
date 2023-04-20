@@ -1,42 +1,42 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
 
-const News = () => {
-  const [articles, setArticles] = useState(null);
+// const News = () => {
+//   const [articles, setArticles] = useState(null);
 
-  useEffect(() => {
-    // const options = {
-    //   method: "GET",
-    //   url: "http://localhost:8000/news",
-    // };
+//   useEffect(() => {
+//     // const options = {
+//     //   method: "GET",
+//     //   url: "http://localhost:8000/news",
+//     // };
 
-    // axios
-    //   .request(options)
-    //   .then((response) => {
-    //     // console.log(response.data);
-    //     setArticles(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log("the news feed error");
-    //     console.error(error);
-    //   });
+//     // axios
+//     //   .request(options)
+//     //   .then((response) => {
+//     //     // console.log(response.data);
+//     //     setArticles(response.data);
+//     //   })
+//     //   .catch((error) => {
+//     //     console.log("the news feed error");
+//     //     console.error(error);
+//     //   });
 
-  }, []);
+//   }, []);
 
-  const firstFiveArticles = articles?.slice(0, 5);
+//   const firstFiveArticles = articles?.slice(0, 5);
 
-  return (
-    <div className="news-feed">
-      <h2>News Feed</h2>
-      {firstFiveArticles?.map((article, index) => (
-        <div className="news-article" key={index}>
-          <a href={article.url} _blank="true">
-            {article.title}
-          </a>
-        </div>
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div className="news-feed">
+//       <h2>News Feed</h2>
+//       {firstFiveArticles?.map((article, index) => (
+//         <div className="news-article" key={index}>
+//           <a href={article.url} _blank="true">
+//             {article.title}
+//           </a>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
 
-export default News;
+// export default News;
