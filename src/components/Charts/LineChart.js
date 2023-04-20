@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Currencies, digitalCurrencies, physicalCurrencies } from "../LeftSide";
-import { ExchangeRate } from "../ExchangeRate";
+import { physicalCurrencies } from "../LeftSide";
 import Loading from "../Loading";
-import Data from "../../utils/Data";
 import { Line } from "react-chartjs-2";
 import dayjs from "dayjs";
 
 import {
   Button,
-  Box,
-  Container,
   Typography,
-  FormControl,
-  TextField,
   Grid,
-  MenuItem,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
@@ -45,7 +38,11 @@ const LineChart = ({ loading, setLoading }) => {
   const [secondCurrency, setSecondCurrency] = useState("JPY");
 
   const [dataArray, setDataArray] = useState([]);
-  const [dateArray, setDateArray] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [
+    _dateArray,
+    setDateArray
+  ] = useState([]);
 
   /* */
   const [chartData, setChartData] = useState({});

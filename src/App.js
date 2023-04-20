@@ -1,9 +1,7 @@
-
 import {useState} from "react"
-import { News, LeftSide, ExchangeRate, Loading, LineChart } from "./components";
-import styled from "styled-components";
+import {  LeftSide, Loading, LineChart } from "./components";
 import { useTheme } from "@mui/material/styles";
-import { Box, Grid, useMediaQuery } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 
 function App() {

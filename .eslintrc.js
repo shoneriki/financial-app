@@ -1,0 +1,13 @@
+module.exports = {
+  parserOptions: {
+    ecmaVersion: 2020, // or the appropriate version for your project
+    sourceType: "module",
+  },
+  // ...
+  rules: {
+    // ...
+    "no-unused-vars": ["error", { varsIgnorePattern: "^_" }],
+    // ...
+  },
+  // ...
+};
