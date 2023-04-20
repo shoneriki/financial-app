@@ -146,7 +146,6 @@ useEffect(() => {
           flexBasis: "50%",
           width: "100%",
           height: "50%",
-          padding: "16px",
           margin: "0",
           borderRadius: { xs: "16px 16px 0 0",sm: "16px 0 0 0",md: "16px 0 0 0", lg: "16px 0 0 0 " },
           textAlign: "center",
@@ -157,7 +156,6 @@ useEffect(() => {
           variant="h6"
           sx={{
             fontWeight: "bold",
-            margin: "0",
           }}
         >
           Currency Converter
@@ -176,10 +174,13 @@ useEffect(() => {
         >
           please enter value and currencies and press enter
         </Typography>
-        <form
+        <Box
+          component="form"
           onSubmit={formHandler}
           sx={{
-            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            margin: "16px 16px"
           }}
         >
           <Grid
@@ -302,6 +303,7 @@ useEffect(() => {
               },
               justifyContent: "center",
               alignItems: "center",
+              margin: "8px 0 0 0",
             }}
           >
             <Button
@@ -313,7 +315,7 @@ useEffect(() => {
               sx={{
                 width: "80%",
                 backgroundColor: "#bada55",
-                padding: "0",
+                padding: "8px 0",
                 fontSize: "0.6rem",
                 borderRadius: "16px",
                 "&:hover": {
@@ -324,7 +326,7 @@ useEffect(() => {
               Convert
             </Button>
           </Grid>
-        </form>
+        </Box>
       </Grid>
       <Grid
         name="ExchangeRate-Wrap"
