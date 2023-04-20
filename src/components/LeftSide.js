@@ -143,6 +143,7 @@ useEffect(() => {
           justifyContent: "center",
           alignItems: "center",
           flex: 1,
+          flexBasis: "50%",
           width: "100%",
           height: "50%",
           padding: "16px",
@@ -310,7 +311,7 @@ useEffect(() => {
               type="submit"
               onClick={convert}
               sx={{
-                width: "100%",
+                width: "80%",
                 backgroundColor: "#bada55",
                 padding: "0",
                 fontSize: "0.6rem",
@@ -330,6 +331,8 @@ useEffect(() => {
         sx={{
           height: "50%",
           borderRadius: { xs: "0", sm: "0 0 0 16px", md: "0 0 0 16px", lg: "0 0 0 16px", },
+          flex: 1,
+          flexBasis: "50%",
         }}
       >
         {showExchangeRate && (

@@ -205,6 +205,8 @@ const LineChart = ({ loading, setLoading }) => {
         flexDirection: "column",
         overflow: "hidden",
         flexGrow: 1,
+        flexBasis: "50%",
+        flex: 1,
         width: "100%",
       }}
     >
@@ -295,6 +297,9 @@ const LineChart = ({ loading, setLoading }) => {
         </Grid>
         <Grid
           name="button-wrap"
+          sx={{
+            margin: "16px 0",
+          }}
         >
           <Button
             onClick={chartDataReq}
@@ -303,7 +308,7 @@ const LineChart = ({ loading, setLoading }) => {
             type="submit"
             sx={{
               fontSize: ".6rem",
-              padding: "0 16px",
+              padding: "8px 16px",
               borderRadius: "16px",
             }}
           >

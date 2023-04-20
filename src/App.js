@@ -53,7 +53,7 @@ function App() {
            name="LineChart-Wrap"
            xs={12}
            sm={6}
-           sx={{ display: "flex" }}
+           sx={{ display: "flex", flexGrow: "1", width: "100%", height: "100%"}}
          >
            <LineChart loading={loading} setLoading={setLoading} />
          </Grid>
