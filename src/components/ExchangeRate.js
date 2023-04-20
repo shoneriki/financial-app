@@ -35,7 +35,7 @@ const ExchangeRate = ({
               justifyContent: "center",
               alignItems: "center",
               height: "100%",
-              borderRadius: {xs: "0", sm: "0 0 0 16px"},
+              borderRadius: {xs: "0", sm: "0 0 0 16px", },
             }}
           >
             <Typography

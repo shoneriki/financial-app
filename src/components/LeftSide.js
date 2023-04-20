@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
-import {Button, Container, Box, Input, FormControl, InputLabel, Select, MenuItem, TextField, NativeSelect, OutlinedInput, Autocomplete, Typography} from '@mui/material'
+import {Button, Container, Box,Grid, Input, FormControl, InputLabel, Select, MenuItem, TextField, NativeSelect, OutlinedInput, Autocomplete, Typography} from '@mui/material'
 
 import { useTheme } from "@mui/material/styles";
 
@@ -122,7 +122,8 @@ useEffect(() => {
   };
 
   return (
-    <Box
+    <Grid
+      name="LeftSide-Container"
       color={theme.palette.text.primary}
       sx={{
         display: "flex",
@@ -133,19 +134,22 @@ useEffect(() => {
         margin: "0",
       }}
     >
-      <Box
+      <Grid
+        name="CurrencyConverter-Container"
         style={{ backgroundColor: theme.palette.secondary.main }}
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          flex: 1,
           width: "100%",
           height: "50%",
-          padding: "0",
+          padding: "16px",
           margin: "0",
-          borderRadius: { xs: "16px 16px 0 0", sm: "16px 0 0 0 " },
+          borderRadius: { xs: "16px 16px 0 0",sm: "16px 0 0 0",md: "16px 0 0 0", lg: "16px 0 0 0 " },
           textAlign: "center",
+          boxSizing: 'border-box',
         }}
       >
         <Typography
@@ -177,7 +181,8 @@ useEffect(() => {
             width: "100%",
           }}
         >
-          <Box
+          <Grid
+            name="inputsForm"
             sx={{
               display: "flex",
               alignItems: "center",
@@ -199,7 +204,8 @@ useEffect(() => {
                 fontSize: "16px",
               }}
             >
-              <Box
+              <Grid
+                name="currencyConverter-input1"
                 sx={{
                   display:'flex',
                   flexDirection: "column",
@@ -218,10 +224,11 @@ useEffect(() => {
                   onChange={(e) => setAmount(e.target.value)}
                   style={{ textAlign: "center"}}
                 />
-              </Box>
+              </Grid>
             </FormControl>
             <FormControl sx={{ width: "33%" }}>
-              <Box
+              <Grid
+                name="currencyConverter-input2"
                 sx={{
                   textAlign: "center",
                   display: "flex",
@@ -248,10 +255,11 @@ useEffect(() => {
                     </option>
                   ))}
                 </select>
-              </Box>
+              </Grid>
             </FormControl>
             <FormControl sx={{ width: "33%" }}>
-              <Box
+              <Grid
+                name="currencyConverter-input3"
                 sx={{
                   textAlign: "center",
                   display: "flex",
@@ -278,14 +286,13 @@ useEffect(() => {
                     </option>
                   ))}
                 </select>
-              </Box>
+              </Grid>
             </FormControl>
-          </Box>
-          <Box
-            // className="btn-wrap"
+          </Grid>
+          <Grid
+            name="button-Container"
             sx={{
               width: "100%",
-              // display: "flex",
               display: {
                 xs: "flex",
                 sm: "flex",
@@ -315,17 +322,14 @@ useEffect(() => {
             >
               Convert
             </Button>
-          </Box>
+          </Grid>
         </form>
-      </Box>
-      <Box
-        // className={`exchange-rate-display ${
-        //   showExchangeRate ? "display" : "hide-on-portrait"
-        // }`}
+      </Grid>
+      <Grid
+        name="ExchangeRate-Wrap"
         sx={{
           height: "50%",
-          flexGrow: 1,
-          borderRadius: { xs: "0", sm: "0" },
+          borderRadius: { xs: "0", sm: "0 0 0 16px", md: "0 0 0 16px", lg: "0 0 0 16px", },
         }}
       >
         {showExchangeRate && (
@@ -338,8 +342,8 @@ useEffect(() => {
             showExchangeRate={showExchangeRate}
           />
         )}
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 };
 

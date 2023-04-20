@@ -196,8 +196,8 @@ const LineChart = ({ loading, setLoading }) => {
   };
 
   return (
-    <Box
-      // className="lineChart-wrap"
+    <Grid
+      name="LineChart-Container"
       style={{backgroundColor: theme.palette.alternate.main}}
       sx={{
         borderRadius: { xs: "0 0 16px 16px", sm: "0 16px 16px 0" },
@@ -205,11 +205,11 @@ const LineChart = ({ loading, setLoading }) => {
         flexDirection: "column",
         overflow: "hidden",
         flexGrow: 1,
-        width: "50%",
+        width: "100%",
       }}
     >
       {loading && <Loading />}
-      <Box
+      <Grid
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -228,14 +228,16 @@ const LineChart = ({ loading, setLoading }) => {
         >
           Monthly Exchange Data
         </Typography>
-        <Box
+        <Grid
+          name="input-wrap"
           component="form"
           sx={{
             display: "flex",
             justifyContent: "space-around",
           }}
         >
-          <Box
+          <Grid
+            name="inputContainer-1"
             sx={{
               textAlign: "center",
               display: "flex",
@@ -261,8 +263,9 @@ const LineChart = ({ loading, setLoading }) => {
                 </option>
               ))}
             </select>
-          </Box>
-          <Box
+          </Grid>
+          <Grid
+            name="inputContainer-2"
             sx={{
               textAlign: "center",
               display: "flex",
@@ -288,9 +291,11 @@ const LineChart = ({ loading, setLoading }) => {
                 </option>
               ))}
             </select>
-          </Box>
-        </Box>
-        <Box className="row second-row">
+          </Grid>
+        </Grid>
+        <Grid
+          name="button-wrap"
+        >
           <Button
             onClick={chartDataReq}
             variant="contained"
@@ -304,9 +309,9 @@ const LineChart = ({ loading, setLoading }) => {
           >
             Monthly Exchange
           </Button>
-        </Box>
-      </Box>
-      <Box
+        </Grid>
+      </Grid>
+      <Grid
         sx={{
           width: "100%",
           height: "calc(100% - 150px)",
@@ -315,11 +320,14 @@ const LineChart = ({ loading, setLoading }) => {
           flexGrow: 1,
         }}
       >
-        <Box style={{ width: "100%", height: "100%" }}>
+        <Grid
+          style={{ width: "100%", height: "100%" }}
+          name="LineChart-Container"
+        >
           <Line data={currencyData} options={chartOptions} />
-        </Box>
-      </Box>
-    </Box>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 
