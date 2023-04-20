@@ -5,7 +5,19 @@ import { ExchangeRate } from "../ExchangeRate";
 import Loading from "../Loading";
 import Data from "../../utils/Data";
 import { Line } from "react-chartjs-2";
-import dayjs from "dayjs"
+import dayjs from "dayjs";
+
+import {
+  Button,
+  Box,
+  Container,
+  Typography,
+  FormControl,
+  TextField,
+  Grid,
+  MenuItem,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
   import {
     Chart as ChartJS,
@@ -43,7 +55,7 @@ const LineChart = ({ loading, setLoading }) => {
 
 
   /* */
-
+  const theme = useTheme();
 
 
   const getData = async () => {
@@ -122,9 +134,6 @@ const LineChart = ({ loading, setLoading }) => {
     //  chartDataReq();
    };
 
-  // const months = Array.from({ length: 12 }, (item, i) => {
-  //   return new Date(0, i).toLocaleString("en-US", { month: "long" });
-  // });
   const currentMonths = (currentDate) => {
     let monthsArray = []
 
@@ -187,54 +196,143 @@ const LineChart = ({ loading, setLoading }) => {
   };
 
   return (
-    <div className="lineChart-wrap">
+    <Grid
+      name="LineChart-Container"
+      style={{backgroundColor: theme.palette.alternate.main}}
+      sx={{
+        borderRadius: { xs: "0 0 16px 16px", sm: "0 16px 16px 0" },
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+        flexGrow: 1,
+        flexBasis: "50%",
+        flex: 1,
+        width: "100%",
+      }}
+    >
       {loading && <Loading />}
-      <div className="column-wrap">
-        <h2> Monthly Exchange Data</h2>
-        <div className="row first-row">
-          <div className="column second select-container">
-            <p>From:</p>
+      <Grid
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "center",
+          margin: "0",
+          padding: "0",
+        }}
+      >
+        <Typography
+          variant="h6"
+          sx={{
+            textAlign: "center",
+            margin: "8px 0",
+            fontWeight: "bold",
+          }}
+        >
+          Monthly Exchange Data
+        </Typography>
+        <Grid
+          name="input-wrap"
+          component="form"
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+          }}
+        >
+          <Grid
+            name="inputContainer-1"
+            sx={{
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <label htmlFor="currency-option-1" sx={{ fontSize: "0.8rem" }}>
+              From:
+            </label>
             <select
+              id="currency-option-1"
               value={firstCurrency}
-              name="currency-option-1"
-              className="currency-options"
-              // onChange={(e) => setFirstCurrency(e.target.value)}
               onChange={handleFirstCurrencyChange}
+              sx={{
+                fontSize: "0.5rem",
+                padding: "0",
+                paddingLeft: "8px", // Adjust the left padding
+              }}
             >
               {physicalCurrencies.map((currency, index) => (
-                <option key={index}>{currency.value}</option>
+                <option key={index} value={currency.value}>
+                  {currency.value}
+                </option>
               ))}
             </select>
-          </div>
-          <div className="column third select-container">
-            <p>To:</p>
+          </Grid>
+          <Grid
+            name="inputContainer-2"
+            sx={{
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <label htmlFor="currency-option-2" sx={{ fontSize: "0.8rem" }}>
+              To:
+            </label>
             <select
+              id="currency-option-2"
               value={secondCurrency}
-              name="currency-option-2"
-              className="currency-options"
-              // onChange={(e) => setSecondCurrency(e.target.value)}
               onChange={handleSecondCurrencyChange}
+              sx={{
+                fontSize: "0.5rem",
+                padding: "0",
+                paddingLeft: "8px", // Adjust the left padding
+              }}
             >
               {physicalCurrencies.map((currency, index) => (
-                <option key={index}>{currency.value}</option>
+                <option key={index} value={currency.value}>
+                  {currency.value}
+                </option>
               ))}
             </select>
-          </div>
-        </div>
-        <div className="row second-row">
-          <button onClick={chartDataReq}>Monthly Exchange</button>
-        </div>
-      </div>
-      <div className="dataColumn wrap">
-        <div className="lineChart">
-          <Line
-            data={currencyData}
-            style={{ height: "200px" }}
-            options={chartOptions}
-          />
-        </div>
-      </div>
-    </div>
+          </Grid>
+        </Grid>
+        <Grid
+          name="button-wrap"
+          sx={{
+            margin: "16px 0",
+          }}
+        >
+          <Button
+            onClick={chartDataReq}
+            variant="contained"
+            color="primary"
+            type="submit"
+            sx={{
+              fontSize: ".6rem",
+              padding: "8px 16px",
+              borderRadius: "16px",
+            }}
+          >
+            Monthly Exchange
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        sx={{
+          width: "100%",
+          height: "calc(100% - 150px)",
+          overflow: "hidden",
+          position: "relative",
+          flexGrow: 1,
+        }}
+      >
+        <Grid
+          style={{ width: "100%", height: "100%" }}
+          name="LineChart-Container"
+        >
+          <Line data={currencyData} options={chartOptions} />
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 

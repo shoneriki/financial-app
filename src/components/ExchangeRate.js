@@ -1,5 +1,7 @@
 import React from "react";
 import { Currencies } from "./LeftSide";
+import {Box, Typography} from "@mui/material"
+import { useTheme } from "@mui/material/styles";
 
 const ExchangeRate = ({
   exchangeRate,
@@ -10,16 +12,40 @@ const ExchangeRate = ({
   signHandler,
   showExchangeRate,
 }) => {
+  const theme = useTheme();
   const roundedExchange = Math.round(exchangeRate * 100) / 100;
   const roundedResult = Math.round(result * 100) / 100;
   const roundedAmount = Math.round(amount * 100) / 100;
   return (
-    <>
-      {
-       result !== 0 && (
-          <div className="exchange-rate">
-            <h2>Exchange Rate: {roundedExchange}</h2>
-            <h2>
+    <Box
+      sx={{
+        height: '100%',
+        borderRadius: {xs: "0", sm: "0"},
+      }}
+    >
+       {
+       result !== 0 &&
+       (
+          <Box
+          // className="exchange-rate"
+            style={{ backgroundColor: theme.palette.tertiary.main }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+              borderRadius: {xs: "0", sm: "0 0 0 16px", },
+            }}
+          >
+            <Typography
+              variant= "h6"
+              sx={{
+                textAlign: "center",
+              }}
+            >
+              Exchange Rate: {roundedExchange}
+              <br/>
               {Currencies.map((currency) => {
                 if (currency.value === primaryCurrency) {
                   return currency.sign;
@@ -32,11 +58,12 @@ const ExchangeRate = ({
                 }
               })}
               {roundedResult}
-            </h2>
-          </div>
+
+            </Typography>
+          </Box>
         )
       }
-    </>
+    </Box>
     );
 };
 
