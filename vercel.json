@@ -7,9 +7,10 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
+      "use": "@vercel/node",
       "config": {
-        "distDir": "build"
+        "installCommand": "npm install",
+        "buildCommand": "npm run build"
       }
     }
   ],
