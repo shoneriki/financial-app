@@ -7,24 +7,6 @@ import { useTheme } from "@mui/material/styles";
 
 import ExchangeRate from "./ExchangeRate";
 
-// export const Currencies = {
-//   USD: { value: "USD", name: "US Dollars", sign: "$", digital: false },
-//   CAD: { value: "CAD", name: "Canadian Dollars", sign: "$", digital: false },
-//   AUD: { value: "AUD", name: "Australian Dollars", sign: "$", digital: false },
-//   EUR: { value: "EUR", name: "Euro", sign: "€", digital: false },
-//   JPY: { value: "JPY", name: "Japanese Yen", sign: "¥", digital: false },
-//   GBP: { value: "GBP", name: "British Pound", sign: "£", digital: false },
-//   ADA: { value: "ADA", name: "Cardano", sign: "₳", digital: true },
-//   BNB: { value: "BNB", name: "BNB", sign: "BNB", digital: true },
-//   BTC: { value: "BTC", name: "Bitcoin", sign: "₿", digital: true },
-//   DOGE: { value: "DOGE", name: "Dogecoin", sign: "Ð", digital: true },
-//   ETH: { value: "ETH", name: "Ethereum", sign: "Ξ", digital: true },
-//   XRP: { value: "XRP", name: "XRP", sign: "x", digital: true },
-//   USDT: { value: "USDT", name: "Tether", sign: "₮", digital: true },
-// };
-
-// const physicalCurrencies = Object.keys(Currencies).filter(currency=> Currencies[currency].digital)
-
 export const Currencies = [
   { value: "USD", name: "US Dollars", sign: "$", digital: false },
   { value: "CAD", name: "Canadian Dollars", sign: "$", digital: false },

@@ -1,5 +1,5 @@
 {
-  "name": "crypto-app-redo",
+  "name": "financial-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -46,7 +46,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://www.shoneriki.github.io/financial-app/",
+  "homepage": "https://financial-data-app.netlify.app",
   "browserslist": {
     "production": [
       ">0.2%",
