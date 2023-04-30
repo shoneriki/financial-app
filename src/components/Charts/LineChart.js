@@ -59,7 +59,7 @@ const LineChart = ({ loading, setLoading }) => {
     // setChartData(null)
     const options = {
       method: "GET",
-      url: "http://localhost:8000/data",
+      url: `${process.env.REACT_APP_API_BASE_URL}/data`,
       params: {
         function: "FX_MONTHLY",
         from_symbol: firstCurrency,

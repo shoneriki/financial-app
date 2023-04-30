@@ -46,7 +46,7 @@ const LeftSide = ({setLoading }) => {
   const convert = () => {
     const options = {
       method: "GET",
-      url: "http://localhost:8000/convert",
+      url: `${process.env.REACT_APP_API_BASE_URL}/convert`,
       params: {
         from_currency: primaryCurrency,
         function: "CURRENCY_EXCHANGE_RATE",
