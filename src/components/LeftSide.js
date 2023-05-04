@@ -92,7 +92,7 @@ const LeftSide = ({setLoading }) => {
 useEffect(() => {
   if (primaryCurrency !== secondaryCurrency) {
     setShowExchangeRate(true);
-    convert()
+    // convert()
   } else {
     setShowExchangeRate(false);
   }
