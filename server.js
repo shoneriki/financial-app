@@ -1,5 +1,3 @@
-const { createServer } = require("http");
-const { parse } = require("url");
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
@@ -97,7 +95,7 @@ app.get("/data", async (req, res) => {
       console.error(error);
     });
 });
-const port = process.env.PORT || 8000
+const port = process.env.PORT
 
 app.listen(port, () =>
   console.log(`Server is running on port ${port}`)

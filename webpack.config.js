@@ -1,7 +1,13 @@
 // const path = require("path");
+// const Dotenv = require("dotenv-webpack");
 
 // module.exports = {
-//   output: {
-//     publicPath: process.env.NODE_ENV === "production" ? "/financial-app/" : "/",
+//   // ...
+//   resolve: {
+//     fallback: {
+//       fs: require.resolve("graceful-fs"),
+//       os: require.resolve("os-browserify/browser"),
+//     },
 //   },
+//   plugins: [new Dotenv()],
 // };

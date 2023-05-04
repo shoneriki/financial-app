@@ -7,6 +7,7 @@ import { useTheme } from "@mui/material/styles";
 
 import ExchangeRate from "./ExchangeRate";
 
+
 export const Currencies = [
   { value: "USD", name: "US Dollars", sign: "$", digital: false },
   { value: "CAD", name: "Canadian Dollars", sign: "$", digital: false },
@@ -45,11 +46,10 @@ const LeftSide = ({setLoading }) => {
 
   const convert = () => {
 
-    console.log("convert")
-    console.log("react app api base url", process.env.REACT_APP_API_BASE_URL)
+    console.log(process.env.REACT_APP_API_BASE_URL);
     const options = {
       method: "GET",
-      url: `${process.env.REACT_APP_API_BASE_URL}/convert`,
+      url: `https://silk-pale-leek.glitch.me/convert`,
       params: {
         from_currency: primaryCurrency,
         function: "CURRENCY_EXCHANGE_RATE",
