@@ -1,47 +1,26 @@
-{
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  },
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node",
-      "config": {
-        "installCommand": "npm install",
-        "buildCommand": "npm run build"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*).js",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/(.*).css",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/(.*).woff2",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/(.*).(png|jpg|gif|ico|svg)",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
-}
+// {
+//   "build": {
+//     "env": {
+//       "NODE_ENV": "production"
+//     }
+//   },
+//   "builds": [
+//     {
+//       "src": "server.js",
+//       "use": "@vercel/node"
+//     }
+//   ],
+//   "routes": [
+//     {
+//       "src": "/convert",
+//       "dest": "/server.js"
+//     },
+//     {
+//       "src": "/data",
+//       "dest": "/server.js"
+//     }
+//   ],
+//   "env": {
+//     "REACT_APP_RAPID_API_KEY": "@rapid_api_key"
+//   }
+// }

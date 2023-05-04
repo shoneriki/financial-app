@@ -44,6 +44,9 @@ const LeftSide = ({setLoading }) => {
   const [result, setResult] = useState(0);
 
   const convert = () => {
+
+    console.log("convert")
+    console.log("react app api base url", process.env.REACT_APP_API_BASE_URL)
     const options = {
       method: "GET",
       url: `${process.env.REACT_APP_API_BASE_URL}/convert`,
@@ -59,7 +62,7 @@ const LeftSide = ({setLoading }) => {
         console.log("response:", response);
         console.log(response.data);
         if (
-          response.data[["Realtime Currency Exchange Rate"]] &&
+          response.data["Realtime Currency Exchange Rate"] &&
           response.data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
         ) {
           setLoading(true);
@@ -82,14 +85,14 @@ const LeftSide = ({setLoading }) => {
         console.error(error);
       })
       .finally(() => {
-        setLoading(false);
+        setLoading(false)
       });
   };
 
 useEffect(() => {
   if (primaryCurrency !== secondaryCurrency) {
     setShowExchangeRate(true);
-/*     convert() */
+    convert()
   } else {
     setShowExchangeRate(false);
   }
@@ -100,7 +103,7 @@ useEffect(() => {
   const formHandler = (e) => {
     setLoading(true);
     e.preventDefault();
-    console.log("formHandler entered");
+    convert();
   };
 
   return (

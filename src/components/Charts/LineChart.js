@@ -57,6 +57,8 @@ const LineChart = ({ loading, setLoading }) => {
 
   const getData = async () => {
     // setChartData(null)
+    console.log("getData")
+    console.log("base url", process.env.REACT_APP_API_BASE_URL);
     const options = {
       method: "GET",
       url: `${process.env.REACT_APP_API_BASE_URL}/data`,
