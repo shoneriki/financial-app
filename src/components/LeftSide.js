@@ -7,34 +7,9 @@ import { useTheme } from "@mui/material/styles";
 
 import ExchangeRate from "./ExchangeRate";
 
-
-export const Currencies = [
-  { value: "USD", name: "US Dollars", sign: "$", digital: false },
-  { value: "CAD", name: "Canadian Dollars", sign: "$", digital: false },
-  { value: "AUD", name: "Australian Dollars", sign: "$", digital: false },
-  { value: "EUR", name: "Euro", sign: "€", digital: false },
-  { value: "JPY", name: "Japanese Yen", sign: "¥", digital: false },
-  { value: "GBP", name: "British Pound", sign: "£", digital: false },
-  { value: "ADA", name: "Cardano", sign: "₳", digital: true },
-  { value: "BNB", name: "BNB", sign: "BNB", digital: true },
-  { value: "BTC", name: "Bitcoin", sign: "₿", digital: true },
-  { value: "DOGE", name: "Dogecoin", sign: "Ð", digital: true },
-  { value: "ETH", name: "Ethereum", sign: "Ξ", digital: true },
-  { value: "XRP", name: "XRP", sign: "x", digital: true },
-  { value: "USDT", name: "Tether", sign: "₮", digital: true },
-];
-
-export const digitalCurrencies = Currencies.filter(
-  (currency) => currency.digital
-);
-export const physicalCurrencies = Currencies.filter(
-  (currency) => !currency.digital
-);
-
-const LeftSide = ({setLoading }) => {
+const LeftSide = ({ Currencies, physicalCurrencies, digitalCurrencies, setLoading}) => {
 
   const theme = useTheme();
-  // change names later?
   const [primaryCurrency, setPrimaryCurrency] = useState("USD");
   const [secondaryCurrency, setSecondaryCurrency] = useState("JPY");
 
@@ -46,7 +21,6 @@ const LeftSide = ({setLoading }) => {
 
   const convert = () => {
 
-    console.log(process.env.REACT_APP_API_BASE_URL);
     const options = {
       method: "GET",
       url: `https://silk-pale-leek.glitch.me/convert`,
@@ -76,8 +50,6 @@ const LeftSide = ({setLoading }) => {
           );
           console.log("params:", options);
           console.log("response data:", response.data);
-          // console.log("exchangeRate:", exchangeRate);
-          // console.log("setResult", result);
         }
       })
       .catch((error) => {
@@ -92,12 +64,13 @@ const LeftSide = ({setLoading }) => {
 useEffect(() => {
   if (primaryCurrency !== secondaryCurrency) {
     setShowExchangeRate(true);
-    // convert()
+    // Reset result and exchange rate when currencies change
+    setResult(0);
+    setExchangeRate(0);
   } else {
     setShowExchangeRate(false);
   }
 }, [primaryCurrency, secondaryCurrency]);
-
 
 
   const formHandler = (e) => {
@@ -327,6 +300,9 @@ useEffect(() => {
             exchangeRate={exchangeRate}
             primaryCurrency={primaryCurrency}
             secondaryCurrency={secondaryCurrency}
+            Currencies={Currencies}
+            physicalCurrencies={physicalCurrencies}
+            digitalCurrencies={digitalCurrencies}
             result={result}
             amount={amount}
             showExchangeRate={showExchangeRate}

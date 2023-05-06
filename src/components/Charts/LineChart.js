@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { physicalCurrencies } from "../LeftSide";
+// import { physicalCurrencies } from "../LeftSide";
 import Loading from "../Loading";
 import { Line } from "react-chartjs-2";
 import dayjs from "dayjs";
@@ -33,7 +33,7 @@ import { useTheme } from "@mui/material/styles";
   );
 
 
-const LineChart = ({ loading, setLoading }) => {
+const LineChart = ({physicalCurrencies, loading, setLoading }) => {
   const [firstCurrency, setFirstCurrency] = useState("USD");
   const [secondCurrency, setSecondCurrency] = useState("JPY");
 
