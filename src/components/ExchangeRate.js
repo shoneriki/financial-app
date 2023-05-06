@@ -1,5 +1,5 @@
 import React from "react";
-import { Currencies } from "./LeftSide";
+// import { Currencies } from "./LeftSide";
 import {Box, Typography} from "@mui/material"
 import { useTheme } from "@mui/material/styles";
 
@@ -7,6 +7,7 @@ const ExchangeRate = ({
   exchangeRate,
   primaryCurrency,
   secondaryCurrency,
+  Currencies,
   amount,
   result,
 }) => {
