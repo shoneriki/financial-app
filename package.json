@@ -20,6 +20,7 @@
     "graceful-fs": "^4.2.11",
     "https-browserify": "^1.0.0",
     "nodemon": "^2.0.20",
+    "nth-check": "^2.0.1",
     "os-browserify": "^0.3.0",
     "path": "^0.12.7",
     "react": "^18.2.0",
@@ -27,8 +28,9 @@
     "react-dom": "^18.2.0",
     "react-promise-tracker": "^2.1.1",
     "react-scripts": "5.0.1",
-    "sass": "^1.59.3",
+    "sass": "^1.63.6",
     "sass-loader": "^13.2.0",
+    "semver": "^7.5.2",
     "stream-http": "^3.2.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
@@ -42,7 +44,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "REACT_APP_API_BASE_URL=https://silk-pale-leek.glitch.me react-scripts build && gh-pages -d build"
-
   },
   "eslintConfig": {
     "extends": [
@@ -66,7 +67,6 @@
   "devDependencies": {
     "dotenv-webpack": "^8.0.1",
     "gh-pages": "^3.2.3",
-    "node-sass": "^7.0.3",
     "react-app-rewired": "^2.2.1"
   }
 }
