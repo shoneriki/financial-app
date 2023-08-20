@@ -4,7 +4,7 @@ This is an app that uses a third party api (https://www.alphavantage.co/) to get
 
 <h3>
   <a
-    href="https://financial-data-app.netlify.app/"
+    href="https://financial-data-app.netlify.app"
     target="_blank"
   >
     Live Demo
